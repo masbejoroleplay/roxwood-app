@@ -473,8 +473,8 @@ CATATAN SETUP (baca sebelum deploy):
   <div class="login-card">
     <div class="text-center mb-8">
       <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-700 text-white shadow-lg shadow-brand-200 mx-auto mb-4"><i class="fas fa-fingerprint text-2xl"></i></div>
-      <h1 class="text-2xl font-extrabold tracking-tight text-stone-900">Sistem Absensi Kabinet Roxwood</h1>
-      <p class="text-sm text-stone-500 mt-1 font-medium">Sistem Absensi Digital</p>
+      <h1 class="text-2xl font-extrabold tracking-tight text-stone-900">Sistem Digital Kabinet Roxwood</h1>
+      <p class="text-sm text-stone-500 mt-1 font-medium">Sistem Digital</p>
     </div>
     <div class="space-y-4">
       <div>
@@ -1318,6 +1318,7 @@ window.LocalDB = LocalDB;
 // Ambil semua data dari D1 untuk mengisi cache. Dipanggil sekali saat
 // boot, sebelum tryAutoLogin(), supaya begitu user login semua tabel
 // (absensi, cuti, dst) sudah terisi dan siap dibaca secara sinkron.
+// Juga dipanggil ulang setelah login untuk memastikan data terbaru tersedia.
 async function initDbCache() {
   const names = ['users','absensi','cuti','setoran','hasil_kerja','jabatan_history'];
   await Promise.all(names.map(async (name) => {
@@ -1325,6 +1326,7 @@ async function initDbCache() {
       const res = await fetch(API_BASE + '/' + name);
       if (!res.ok) throw new Error('status ' + res.status);
       _cache[name] = await res.json();
+      console.log(`[D1 sync] ${name} loaded: ${_cache[name].length} records`);
     } catch (err) {
       console.warn('[D1 sync] Gagal memuat', name, '-', err.message || err);
       _cache[name] = [];
@@ -1463,7 +1465,10 @@ window.doLogin = function() {
   const pass  = document.getElementById('login-pass').value;
   if (!email || !pass) { showToast('warning','Email dan password wajib diisi.'); return; }
   btn.disabled = true; const orig = btn.innerHTML; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
-  window.FirebaseAuth.signIn(email, pass).then((fbUser) => {
+  window.FirebaseAuth.signIn(email, pass).then(async (fbUser) => {
+    // Refresh cache dari D1 setelah login berhasil untuk memastikan data terbaru tersedia
+    await initDbCache();
+    
     btn.disabled = false; btn.innerHTML = orig;
     const user = LocalDB.users.all().find(u => u.uid === fbUser.uid) || LocalDB.users.findByEmail(email);
     if (!user) {
@@ -1498,9 +1503,13 @@ window.doLogout = function() {
 window._suppressAutoLogin = false;
 
 function tryAutoLogin() {
-  window.FirebaseAuth.onAuthChange((fbUser) => {
+  window.FirebaseAuth.onAuthChange(async (fbUser) => {
     if (window._suppressAutoLogin) return;
     if (!fbUser) { showLoginScreen(); return; }
+    
+    // Refresh cache dari D1 untuk auto-login (misalnya refresh halaman)
+    await initDbCache();
+    
     const user = LocalDB.users.all().find(u => u.uid === fbUser.uid);
     if (!user) { showLoginScreen(); return; }
     currentUser = { uid: fbUser.uid, email: fbUser.email };
@@ -1542,6 +1551,15 @@ function renderForRole() {
   showPage('absensi');
   setInterval(updateClock, 1000); updateClock();
   updateDate(); setInterval(updateDate, 60000);
+  
+  console.log('[App] Loaded cache stats:', {
+    users: _cache.users.length,
+    absensi: _cache.absensi.length,
+    cuti: _cache.cuti.length,
+    setoran: _cache.setoran.length,
+    hasil_kerja: _cache.hasil_kerja.length,
+    jabatan_history: _cache.jabatan_history.length
+  });
 }
 
 // "Sampai Tanggal" pada semua channel otomatis terisi hari ini, dan
