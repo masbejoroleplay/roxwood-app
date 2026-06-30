@@ -506,8 +506,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     } catch (setoranErr) { console.warn('[SmartCard] Gagal mencatat setoran:', setoranErr); }
                 }
 
-                // Catat setoran KTA (hanya jika KTA dipilih) — recorded here so nama is guaranteed filled
-                if (ktaBadgeSelected && statusPembuatan === 'KTA') {
+                // Catat setoran KTA (hanya jika KTA dipilih DAN Status Penerbitan = "Pembuatan Baru")
+                // Status lain (Salah Input, Ganti Foto, Update Badge) tidak masuk Rekap Setoran
+                if (ktaBadgeSelected && statusPembuatan === 'KTA' && statusCetak === 'Pembuatan Baru') {
                     try {
                         const now = new Date();
                         const tglJkt = now.toLocaleDateString('en-CA', { timeZone: 'Asia/Jakarta' });
