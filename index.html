@@ -3410,8 +3410,8 @@ window.submitPerjalananDinas = async function() {
     const file = fileInput.files[0];
     await sendHasilKerjaToDiscord(WEBHOOK_CONFIG.perjalanan_dinas, file, currentProfile.nama, keterangan, 'perjalanan_dinas', false);
 
-    // Save to localStorage
-    LocalDB.hasil_kerja.add({
+    // Save to database
+    const newData = {
       id_karyawan: currentProfile.id_karyawan,
       nama: currentProfile.nama,
       tanggal: getLocalDateStr(),
@@ -3419,13 +3419,16 @@ window.submitPerjalananDinas = async function() {
       jenis: 'perjalanan_dinas',
       bonus: 50000,
       timestamp: new Date().toISOString()
-    });
+    };
+    LocalDB.hasil_kerja.add(newData);
+    console.log('[Perjalanan Dinas] Data saved:', newData);
 
     fileInput.value = '';
     document.getElementById('pd-keterangan').value = '';
     playSound('success');
     showToast('success', '✅ Perjalanan Dinas berhasil dikirim! Bonus $IDP 50.000');
-    loadPerjalananDinas();
+    // Delay reload to ensure cache is updated
+    setTimeout(() => loadPerjalananDinas(), 100);
   } catch(e) {
     console.error('[Perjalanan Dinas]', e);
     showToast('error', 'Gagal mengirim: ' + (e.message || 'Unknown error'));
@@ -3504,8 +3507,8 @@ window.submitHasilCreative = async function() {
     // High resolution (pixelRatio 3) like smart card
     await sendHasilKerjaToDiscord(WEBHOOK_CONFIG.hasil_creative, file, currentProfile.nama, keterangan, 'hasil_creative', true);
 
-    // Save to localStorage
-    LocalDB.hasil_kerja.add({
+    // Save to database
+    const newData = {
       id_karyawan: currentProfile.id_karyawan,
       nama: currentProfile.nama,
       tanggal: getLocalDateStr(),
@@ -3513,13 +3516,16 @@ window.submitHasilCreative = async function() {
       jenis: 'hasil_creative',
       bonus: 200000,
       timestamp: new Date().toISOString()
-    });
+    };
+    LocalDB.hasil_kerja.add(newData);
+    console.log('[Hasil Creative] Data saved:', newData);
 
     fileInput.value = '';
     document.getElementById('hc-keterangan').value = '';
     playSound('success');
     showToast('success', '✅ Hasil Creative berhasil dikirim! Bonus $IDP 200.000');
-    loadHasilCreative();
+    // Delay reload to ensure cache is updated
+    setTimeout(() => loadHasilCreative(), 100);
   } catch(e) {
     console.error('[Hasil Creative]', e);
     showToast('error', 'Gagal mengirim: ' + (e.message || 'Unknown error'));
