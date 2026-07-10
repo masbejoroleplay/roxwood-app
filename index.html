@@ -3338,16 +3338,42 @@ async function sendHasilKerjaToDiscord(webhookUrl, file, nama, keterangan, jenis
       const img = new Image();
       const url = URL.createObjectURL(file);
       await new Promise((resolve, reject) => { img.onload = resolve; img.onerror = reject; img.src = url; });
+      
+      // Cek ukuran gambar asli - batasi scale jika terlalu besar untuk mencegah memory overflow
+      const maxDimension = 4096; // batas maksimal lebar/tinggi dalam pixel
+      let scale = 3;
+      
+      // Jika hasil scale melebihi batas, kurangi scale
+      if (img.naturalWidth * scale > maxDimension || img.naturalHeight * scale > maxDimension) {
+        scale = Math.min(maxDimension / img.naturalWidth, maxDimension / img.naturalHeight);
+        console.log(`[Hasil Kerja] Gambar terlalu besar, scale dikurangi menjadi ${scale.toFixed(2)}x`);
+      }
+      
       const canvas = document.createElement('canvas');
-      const scale = 3;
       canvas.width = img.naturalWidth * scale;
       canvas.height = img.naturalHeight * scale;
       const ctx = canvas.getContext('2d');
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
       URL.revokeObjectURL(url);
-      const blob = await new Promise(r => canvas.toBlob(r, 'image/png'));
+      
+      const blob = await new Promise((resolve, reject) => {
+        canvas.toBlob((b) => {
+          if (!b) reject(new Error('toBlob returned null'));
+          else resolve(b);
+        }, 'image/png');
+      });
+      
+      // Cek ukuran file hasil (Discord webhook limit 8MB)
+      if (blob.size > 8 * 1024 * 1024) {
+        console.warn(`[Hasil Kerja] File hasil terlalu besar (${(blob.size/1024/1024).toFixed(2)}MB), gunakan file asli`);
+        throw new Error('File size exceeds Discord limit');
+      }
+      
       fileToSend = new File([blob], fileName.replace(/\.[^.]+$/, '.png'), { type: 'image/png' });
-    } catch(e) { console.warn('[Hasil Kerja] High-res conversion failed, using original:', e); }
+      console.log(`[Hasil Kerja] High-res conversion success: ${canvas.width}x${canvas.height}, ${(blob.size/1024).toFixed(0)}KB`);
+    } catch(e) { 
+      console.warn('[Hasil Kerja] High-res conversion failed, using original:', e); 
+    }
   }
 
   const safeFileName = nama.toUpperCase().replace(/[^A-Z0-9 ]/g, "").replace(/\s+/g, '_');
