@@ -2006,11 +2006,11 @@ async function sendCutiToDiscord(nama, jenisIzin, dari, sampai) {
     content: DISCORD_HR_ROLE_ID ? `<@&${DISCORD_HR_ROLE_ID}>` : '@HR',
     allowed_mentions: DISCORD_HR_ROLE_ID ? { roles: [DISCORD_HR_ROLE_ID] } : { parse: ['everyone','roles','users'] },
     embeds: [{
-      author: { name: 'ðŸ“‹ Pengajuan Cuti Â· Kabinet Roxwood' },
-      title: 'âš ï¸ Cuti Baru - Mohon Ditindaklanjuti',
+      author: { name: '📋 Pengajuan Cuti · Kabinet Roxwood' },
+      title: '⚠️ Cuti Baru - Mohon Ditindaklanjuti',
       color: 16763904,
-      description: `**${nama}** telah mengajukan **${jenisLabel}**.\n\nðŸ“… **${rentang}**\n\n> *Mohon segera diperiksa dan ditindaklanjuti oleh tim HR.*`,
-      footer: { text: 'Sistem Pengajuan Cuti Â· Kabinet Roxwood', icon_url: 'https://cdn.discordapp.com/attachments/1474186524747894919/1501819127751512134/lg_rx.png' },
+      description: `**${nama}** telah mengajukan **${jenisLabel}**.\n\n📅 **${rentang}**\n\n> *Mohon segera diperiksa dan ditindaklanjuti oleh tim HR.*`,
+      footer: { text: 'Sistem Pengajuan Cuti · Kabinet Roxwood', icon_url: 'https://cdn.discordapp.com/attachments/1474186524747894919/1501819127751512134/lg_rx.png' },
       timestamp: new Date().toISOString()
     }]
   };
@@ -2026,17 +2026,17 @@ async function sendAttendanceToDiscord(action, profile, waktu, photoFile) {
   const unixTs = Math.floor(waktu.getTime()/1000);
   const embed = {
     embeds: [{
-      author: { name: 'Log Absensi Â· Kabinet Roxwood' },
-      title: isIn ? 'âœ… Clock In' : 'ðŸšª Clock Out',
+      author: { name: 'Log Absensi · Kabinet Roxwood' },
+      title: isIn ? '✅ Clock In' : '🚪 Clock Out',
       color: isIn ? 5763719 : 15548997,
       fields: [
-        { name: 'ðŸ‘¤ Nama',    value: `**${profile.nama}**`,        inline: true },
-        { name: 'ðŸ’¼ Jabatan', value: `\`${profile.jabatan||'-'}\``, inline: true },
-        { name: 'ðŸªª ID',      value: `\`${profile.id_karyawan||'-'}\``, inline: true },
-        { name: 'â° Waktu',   value: `<t:${unixTs}:F>`,             inline: false }
+        { name: '👤 Nama',    value: `**${profile.nama}**`,        inline: true },
+        { name: '💼 Jabatan', value: `\`${profile.jabatan||'-'}\``, inline: true },
+        { name: '🪪 ID',      value: `\`${profile.id_karyawan||'-'}\``, inline: true },
+        { name: '⏰ Waktu',   value: `<t:${unixTs}:F>`,             inline: false }
       ],
       image: photoFile ? { url: 'attachment://bukti.jpg' } : undefined,
-      footer: { text: 'Sistem Absensi Â· Kabinet Roxwood' },
+      footer: { text: 'Sistem Absensi · Kabinet Roxwood' },
       timestamp: waktu.toISOString()
     }]
   };
@@ -3679,17 +3679,17 @@ async function sendHasilKerjaToDiscord(webhookUrl, file, nama, keterangan, jenis
     username: 'Roxwood Command Center',
     avatar_url: logoUrl,
     embeds: [{
-      author: { name: 'ðŸ“‹ Hasil Kerja Kabinet Â· Kabinet Roxwood', icon_url: logoUrl },
-      title: `ðŸ“¤ ${jenisLabel} - ${nama.toUpperCase()}`,
+      author: { name: '📋 Hasil Kerja Kabinet · Kabinet Roxwood', icon_url: logoUrl },
+      title: `📤 ${jenisLabel} - ${nama.toUpperCase()}`,
       color: color,
       fields: [
-        { name: 'ðŸ‘¤ Nama', value: `**${nama.toUpperCase()}**`, inline: true },
-        { name: 'ðŸ“… Tanggal', value: `**${getLocalDateStr()}**`, inline: true },
-        { name: 'ðŸ’° Bonus', value: `**${bonusLabel}**`, inline: true },
-        { name: 'ðŸ“ Keterangan Project', value: keterangan, inline: false }
+        { name: '👤 Nama', value: `**${nama.toUpperCase()}**`, inline: true },
+        { name: '📅 Tanggal', value: `**${getLocalDateStr()}**`, inline: true },
+        { name: '💰 Bonus', value: `**${bonusLabel}**`, inline: true },
+        { name: '📝 Keterangan Project', value: keterangan, inline: false }
       ],
       image: { url: `attachment://${formattedName}` },
-      footer: { text: 'Sistem Hasil Kerja Â· Kabinet Roxwood', icon_url: logoUrl },
+      footer: { text: 'Sistem Hasil Kerja · Kabinet Roxwood', icon_url: logoUrl },
       timestamp: new Date().toISOString()
     }]
   };
