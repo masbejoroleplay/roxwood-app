@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
@@ -7,9 +7,9 @@
 <title>Sistem Absensi Kabinet Roxwood</title>
 
 <!--
-═══════════════════════════════════════════════════════════════════════
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 CATATAN SETUP (baca sebelum deploy):
-═══════════════════════════════════════════════════════════════════════
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 1. DATABASE: Saat ini aplikasi memakai localStorage sebagai "Database
    sementara" (lihat objek `LocalDB` di bagian <script>). Semua fungsi
    sudah disusun dalam bentuk yang mirip Firestore (collection-style:
@@ -24,13 +24,13 @@ CATATAN SETUP (baca sebelum deploy):
 
 3. WEBHOOK DISCORD: Foto bukti Clock In / Clock Out dikirim langsung
    ke Discord Webhook (multipart/form-data) dan TIDAK disimpan ke
-   manapun di sisi aplikasi — jadi tidak memakan penyimpanan apapun.
+   manapun di sisi aplikasi - jadi tidak memakan penyimpanan apapun.
    Atur URL webhook pada `WEBHOOK_CONFIG.absensi` di bagian <script>.
 
 4. Akun demo bawaan (untuk testing UI sebelum Auth asli dipasang):
-     Admin → admin@roxwood.id   / admin123
-     Staff → staff1@roxwood.id  / staff123
-═══════════════════════════════════════════════════════════════════════
+     Admin â†’ admin@roxwood.id   / admin123
+     Staff â†’ staff1@roxwood.id  / staff123
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 -->
 
 <script src="https://cdn.tailwindcss.com"></script>
@@ -54,24 +54,24 @@ CATATAN SETUP (baca sebelum deploy):
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 
-<!-- ═══ SMART CARD: dependencies untuk halaman Penerbitan Smart Card ═══ -->
+<!-- â•â•â• SMART CARD: dependencies untuk halaman Penerbitan Smart Card â•â•â• -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
 <style id="smartcard-style">
-/* ════════════════════════════════════════════════════════════════════
-   SMART CARD — Penerbitan Smart Card
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   SMART CARD - Penerbitan Smart Card
    CSS untuk preview "ROXWOOD KINGDOM CARD" (dipertahankan identik 1:1
    secara visual dengan smartcard_clone_html.html), modal crop foto,
    dan elemen form khusus halaman ini.
    Semua class/id sengaja diberi prefix "sc-" supaya tidak bentrok
    dengan style Tailwind/utility milik index.html. Disisipkan langsung
    (bukan file eksternal terpisah) supaya tidak ada risiko gagal load.
-   ════════════════════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;600;800&display=swap');
 
-/* ── Layout pembungkus preview ─────────────────────────────────────── */
+/* â”€â”€ Layout pembungkus preview â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .sc-card-area {
   display: flex;
   flex-direction: column;
@@ -80,7 +80,7 @@ CATATAN SETUP (baca sebelum deploy):
 
 .sc-card-scale-wrap { transform-origin: top center; }
 
-/* ── Border glow berputar di sekeliling kartu ──────────────────────── */
+/* â”€â”€ Border glow berputar di sekeliling kartu â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .sc-glow-container {
   position: relative;
   padding: 3px;
@@ -116,7 +116,7 @@ CATATAN SETUP (baca sebelum deploy):
   100% { transform: rotate(360deg); }
 }
 
-/* ── Kartu utama ────────────────────────────────────────────────────── */
+/* â”€â”€ Kartu utama â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .sc-card-roxwood {
   width: 600px;
   height: 380px;
@@ -158,7 +158,7 @@ CATATAN SETUP (baca sebelum deploy):
   white-space: nowrap;
 }
 
-/* ── Badge / lisensi tambahan di pojok kanan atas kartu ─────────────── */
+/* â”€â”€ Badge / lisensi tambahan di pojok kanan atas kartu â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .sc-badge-container {
   position: absolute;
   top: 63px;
@@ -182,11 +182,11 @@ CATATAN SETUP (baca sebelum deploy):
   100%{ transform: scale(1); opacity: 1; }
 }
 
-/* ── Chip & foto anggota ────────────────────────────────────────────── */
+/* â”€â”€ Chip & foto anggota â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .sc-card-chip { position: absolute; bottom: 80px; right: 520px; width: 60px; height: auto; z-index: 10; }
 .sc-photo-section { position: absolute; height: 200px; width: auto; border-radius: 10px; top: 136px; left: 420px; }
 
-/* ── Banner unit & detail anggota ───────────────────────────────────── */
+/* â”€â”€ Banner unit & detail anggota â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .sc-unit-banner-bar { position: absolute; top: 115px; left: 40px; }
 .sc-unit-banner-bar span {
   font-family: 'Cinzel', serif;
@@ -215,18 +215,18 @@ CATATAN SETUP (baca sebelum deploy):
 .sc-detail-value { color: #e6c587; font-weight: 600; }
 .sc-member-name { font-weight: 800; color: #e6c587; text-transform: uppercase; }
 
-/* ── Footer: tanda tangan & masa berlaku ────────────────────────────── */
-/* Struktur & jarak internal (title→image→name) sama persis seperti desain
-   asli. Seluruh blok dinaikkan (bottom 34px → 40px) supaya TANDA TANGAN
-   SULTAN, NAMA SULTAN, dan VALID DATE posisinya lebih tinggi. Jarak title→
-   image juga dipersempit (margin-bottom 10px → 6px) supaya gambar tanda
+/* â”€â”€ Footer: tanda tangan & masa berlaku â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* Struktur & jarak internal (titleâ†’imageâ†’name) sama persis seperti desain
+   asli. Seluruh blok dinaikkan (bottom 34px â†’ 40px) supaya TANDA TANGAN
+   SULTAN, NAMA SULTAN, dan VALID DATE posisinya lebih tinggi. Jarak titleâ†’
+   image juga dipersempit (margin-bottom 10px â†’ 6px) supaya gambar tanda
    tangan & nama naik sedikit lebih banyak dibanding "KING ROXWOOD", yang
    sengaja hanya dinaikkan tipis agar tetap aman dari baris Pekerjaan di
    atasnya (tidak saling tertimpa).
    Penyesuaian lanjutan mengikuti referensi screenshot asli: nama "SULTAN
    MANGKUASMORO I" digeser naik 4px sendiri (top:-4px, posisi relatif) agar
    lebih dekat ke tanda tangan tanpa ikut menggeser KING ROXWOOD/gambar TTD,
-   dan Valid Date diturunkan kembali sedikit (bottom -12px → -20px). */
+   dan Valid Date diturunkan kembali sedikit (bottom -12px â†’ -20px). */
 .sc-card-footer { position: absolute; bottom: 40px; left: 40px; display: flex; align-items: flex-end; }
 .sc-sig-section { display: flex; }
 .sc-sig-area { display: flex; flex-direction: column; align-items: center; position: relative; width: 250px; }
@@ -278,7 +278,7 @@ CATATAN SETUP (baca sebelum deploy):
   left: 400px;
 }
 
-/* ── Checkbox badge di form (gaya ringan, menyatu dengan tema cream) ── */
+/* â”€â”€ Checkbox badge di form (gaya ringan, menyatu dengan tema cream) â”€â”€ */
 .sc-badge-cb-group {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -299,7 +299,7 @@ CATATAN SETUP (baca sebelum deploy):
   flex-shrink: 0;
 }
 
-/* ── Modal crop foto (tema gelap khas Roxwood, terpisah dari modal lain) ── */
+/* â”€â”€ Modal crop foto (tema gelap khas Roxwood, terpisah dari modal lain) â”€â”€ */
 #sc-cropperModal {
   display: none;
   position: fixed;
@@ -377,7 +377,7 @@ CATATAN SETUP (baca sebelum deploy):
 #sc-cropperModal .cropper-point { background-color: #c5a059 !important; }
 #sc-cropperModal .cropper-view-box { outline: 2px solid #c5a059 !important; }
 
-/* ── Responsif: perkecil kartu di layar sempit, tanpa mengubah rasio ── */
+/* â”€â”€ Responsif: perkecil kartu di layar sempit, tanpa mengubah rasio â”€â”€ */
 @media (max-width: 700px) {
   .sc-card-scale-wrap { transform: scale(0.52); margin-bottom: -180px; }
 }
@@ -488,7 +488,7 @@ CATATAN SETUP (baca sebelum deploy):
       <div>
         <label class="mb-1.5 block text-sm font-semibold text-stone-600">Password</label>
         <div class="relative">
-          <input id="login-pass" type="password" class="input-field" placeholder="••••••••" autocomplete="current-password">
+          <input id="login-pass" type="password" class="input-field" placeholder="********" autocomplete="current-password">
           <button type="button" onclick="togglePassVis('login-pass',this)" class="absolute right-4 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600"><i class="fas fa-eye text-sm"></i></button>
         </div>
       </div>
@@ -501,7 +501,7 @@ CATATAN SETUP (baca sebelum deploy):
   </div>
 </div>
 
-<!-- ══ MODALS ══════════════════════════════════════════════════════ -->
+<!-- â•â• MODALS â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
 
 <div id="confirm-hapus-modal" style="display:none" class="modal-backdrop">
   <div class="modal-card" style="max-width:400px;">
@@ -574,6 +574,25 @@ CATATAN SETUP (baca sebelum deploy):
     </div>
   </div>
 </div>
+<div id="edit-finance-modal" style="display:none" class="modal-backdrop">
+  <div class="modal-card" style="max-width:420px;">
+    <div class="flex items-center justify-between mb-6"><div><p class="text-xs font-bold uppercase tracking-widest text-emerald-600">Finance</p><h3 class="text-lg font-extrabold text-stone-900">Edit Transaksi</h3></div><button onclick="closeEditFinanceModal()" class="h-9 w-9 rounded-xl bg-stone-100 flex items-center justify-center text-stone-500 hover:bg-stone-200"><i class="fas fa-times"></i></button></div>
+    <input type="hidden" id="editfinance-id">
+    <div class="space-y-4">
+      <div class="rounded-2xl border border-rose-100 bg-rose-50 p-3 flex items-center justify-between"><div class="flex items-center gap-2 text-rose-700"><i class="fas fa-triangle-exclamation text-sm"></i><span class="text-xs font-semibold">Hapus transaksi ini?</span></div><button onclick="confirmDeleteFinance()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-rose-600 text-white hover:bg-rose-700 transition"><i class="fas fa-trash-alt text-[10px]"></i> Hapus</button></div>
+      <div><label class="mb-1.5 block text-sm font-semibold text-stone-600">Nominal <span class="text-rose-500">*</span></label><input id="editfinance-nominal" type="text" inputmode="numeric" class="input-field" placeholder="100.000"></div>
+      <div><label class="mb-1.5 block text-sm font-semibold text-stone-600">Keterangan</label><textarea id="editfinance-keterangan" rows="3" class="input-field resize-none" placeholder="Catatan transaksi"></textarea></div>
+      <div class="flex gap-3 pt-2"><button onclick="closeEditFinanceModal()" class="btn-secondary flex-1">Batal</button><button onclick="saveEditFinance()" class="btn-primary flex-1 flex items-center justify-center gap-2"><i class="fas fa-save"></i> Simpan</button></div>
+    </div>
+  </div>
+</div>
+<div id="detail-view-modal" style="display:none" class="modal-backdrop">
+  <div class="modal-card" style="max-width:520px;">
+    <div class="flex items-center justify-between mb-5"><div><p id="detail-view-eyebrow" class="text-xs font-bold uppercase tracking-widest text-brand-700">Detail</p><h3 id="detail-view-title" class="text-lg font-extrabold text-stone-900">Keterangan</h3></div><button onclick="closeDetailView()" class="h-9 w-9 rounded-xl bg-stone-100 flex items-center justify-center text-stone-500 hover:bg-stone-200"><i class="fas fa-times"></i></button></div>
+    <div class="rounded-2xl bg-brand-50 border border-brand-100 p-4 max-h-[360px] overflow-y-auto"><p id="detail-view-body" class="text-sm font-medium leading-6 text-stone-700 whitespace-pre-wrap"></p></div>
+    <button onclick="closeDetailView()" class="btn-secondary w-full mt-5">Tutup</button>
+  </div>
+</div>
 <div id="sc-cropperModal">
   <div class="sc-modal-content">
     <div class="sc-modal-header"><h3>Roxwood Kingdom</h3></div>
@@ -581,9 +600,9 @@ CATATAN SETUP (baca sebelum deploy):
       <div class="sc-img-container"><img id="sc-imageToCrop"></div>
     </div>
     <div class="sc-modal-buttons">
-      <button type="button" id="sc-btnCancelCrop" class="sc-btn-cancel">✕ Batal</button>
-      <button type="button" id="sc-btnFullCrop" class="sc-btn-full">⛶ Full Crop</button>
-      <button type="button" id="sc-btnApplyCrop" class="sc-btn-apply">🛡️ Crop</button>
+      <button type="button" id="sc-btnCancelCrop" class="sc-btn-cancel">âœ• Batal</button>
+      <button type="button" id="sc-btnFullCrop" class="sc-btn-full">â›¶ Full Crop</button>
+      <button type="button" id="sc-btnApplyCrop" class="sc-btn-apply">ðŸ›¡ï¸ Crop</button>
     </div>
   </div>
 </div>
@@ -598,7 +617,7 @@ CATATAN SETUP (baca sebelum deploy):
         <div class="flex items-center gap-3"><div class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-700 text-white shadow-md shadow-brand-100"><i class="fas fa-fingerprint text-sm"></i></div><div><p class="text-[10px] font-bold uppercase tracking-[0.28em] text-brand-700">Menu</p><h2 class="text-base font-extrabold tracking-tight text-stone-900">Kabinet Roxwood</h2></div></div>
         <button onclick="closeSidebar()" class="h-8 w-8 flex items-center justify-center rounded-xl bg-stone-100 text-stone-500 hover:bg-stone-200 transition"><i class="fas fa-times text-sm"></i></button>
       </div>
-      <div class="flex items-center gap-3 bg-brand-50 rounded-2xl px-3 py-2.5"><div class="h-9 w-9 rounded-xl bg-brand-100 flex items-center justify-center text-brand-700 font-black text-sm flex-shrink-0"><i class="fas fa-user text-xs"></i></div><div class="min-w-0"><p id="user-display-name" class="text-sm font-bold text-stone-900 truncate">—</p><span id="user-role-badge" class="text-[10px] font-bold uppercase tracking-widest text-brand-700">—</span></div></div>
+      <div class="flex items-center gap-3 bg-brand-50 rounded-2xl px-3 py-2.5"><div class="h-9 w-9 rounded-xl bg-brand-100 flex items-center justify-center text-brand-700 font-black text-sm flex-shrink-0"><i class="fas fa-user text-xs"></i></div><div class="min-w-0"><p id="user-display-name" class="text-sm font-bold text-stone-900 truncate">-</p><span id="user-role-badge" class="text-[10px] font-bold uppercase tracking-widest text-brand-700">-</span></div></div>
     </div>
     <nav class="flex-1 p-4 overflow-y-auto">
       <p class="section-header">Smart Card</p>
@@ -614,6 +633,11 @@ CATATAN SETUP (baca sebelum deploy):
       <p class="section-header">Hasil Kerja Kabinet</p>
       <div class="nav-item" id="nav-perjalanan-dinas" onclick="showPage('perjalanan-dinas')"><div class="nav-icon"><i class="fas fa-plane-departure"></i></div><span>Perjalanan Dinas</span></div>
       <div class="nav-item" id="nav-hasil-creative" onclick="showPage('hasil-creative')"><div class="nav-icon"><i class="fas fa-palette"></i></div><span>Hasil Kerja Creative</span></div>
+      <p class="section-header" id="section-finance-nav">Finance</p>
+      <div class="nav-item" id="nav-finance-overview" onclick="showPage('finance-overview')"><div class="nav-icon"><i class="fas fa-chart-pie"></i></div><span>Overview</span></div>
+      <div class="nav-item" id="nav-finance-income" onclick="showPage('finance-income')"><div class="nav-icon"><i class="fas fa-arrow-down"></i></div><span>Pencatatan Pemasukan</span></div>
+      <div class="nav-item" id="nav-finance-expense" onclick="showPage('finance-expense')"><div class="nav-icon"><i class="fas fa-arrow-up"></i></div><span>Pencatatan Pengeluaran</span></div>
+      <div class="nav-item" id="nav-finance-history" onclick="showPage('finance-history')"><div class="nav-icon"><i class="fas fa-clock-rotate-left"></i></div><span>History Finance</span></div>
       <p class="section-header">Cuti &amp; Izin</p>
       <div class="nav-item" id="nav-cuti" onclick="showPage('cuti')"><div class="nav-icon"><i class="fas fa-calendar-minus"></i></div><span>Pengajuan Cuti</span></div>
       <div class="nav-item" id="nav-statuscuti" onclick="showPage('statuscuti')"><div class="nav-icon"><i class="fas fa-clipboard-list"></i></div><span>Status Cuti</span></div>
@@ -645,7 +669,7 @@ CATATAN SETUP (baca sebelum deploy):
           <div class="space-y-4">
             <div class="glass rounded-[28px] border border-brand-100 p-6 shadow-xl shadow-stone-200/50">
               <div class="mb-5 flex items-start justify-between gap-4"><div><p class="text-xs font-bold uppercase tracking-[0.25em] text-brand-700">Identitas Pegawai</p><h2 class="mt-1 text-lg font-extrabold tracking-tight text-stone-900">Data Karyawan</h2></div><div class="rounded-2xl bg-brand-50 p-3 text-brand-700"><i class="fas fa-user-check"></i></div></div>
-              <div id="absensi-self-info" class="rounded-2xl bg-brand-50 border border-brand-100 p-4"><p class="text-xs font-bold uppercase tracking-widest text-brand-700 mb-2">Karyawan Login</p><p class="font-extrabold text-stone-900 text-lg" id="self-nama">—</p><div class="flex gap-3 mt-1"><span class="text-xs font-semibold text-stone-500" id="self-jabatan">—</span><span class="text-xs font-semibold text-brand-600" id="self-id">—</span></div></div>
+              <div id="absensi-self-info" class="rounded-2xl bg-brand-50 border border-brand-100 p-4"><p class="text-xs font-bold uppercase tracking-widest text-brand-700 mb-2">Karyawan Login</p><p class="font-extrabold text-stone-900 text-lg" id="self-nama">-</p><div class="flex gap-3 mt-1"><span class="text-xs font-semibold text-stone-500" id="self-jabatan">-</span><span class="text-xs font-semibold text-brand-600" id="self-id">-</span></div></div>
             </div>
             <div class="overflow-hidden rounded-[28px] bg-stone-950 p-6 text-white shadow-2xl shadow-stone-300/50">
               <div class="relative"><div class="mb-3 flex items-center justify-between"><div><p class="text-[11px] font-bold uppercase tracking-[0.28em] text-brand-300">Waktu Real-time</p><p class="mt-1 text-sm text-stone-400">Zona waktu: Asia/Jakarta</p></div><div class="relative"><span class="pulse-ring absolute inset-0 rounded-full bg-emerald-400"></span><span class="relative block h-3 w-3 rounded-full bg-emerald-400"></span></div></div><h2 id="live-clock" class="text-5xl font-black tracking-tight tabular-nums md:text-6xl">--:--:--</h2><p id="current-date-clock" class="mt-3 text-sm font-medium text-stone-300"></p></div>
@@ -708,10 +732,10 @@ CATATAN SETUP (baca sebelum deploy):
           </div>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5">
-          <div class="stat-card"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">Total Hadir</p><p id="stat-total-hadir" class="text-3xl font-black text-stone-900">—</p><p class="text-xs text-stone-400 mt-1 font-medium">sesi absensi</p></div>
-          <div class="stat-card"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">Total Jam</p><p id="stat-total-jam" class="text-3xl font-black text-brand-700">—</p><p class="text-xs text-stone-400 mt-1 font-medium">jam kerja</p></div>
-          <div class="stat-card"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">Rata-rata/Sesi</p><p id="stat-avg-jam" class="text-3xl font-black text-blue-600">—</p><p class="text-xs text-stone-400 mt-1 font-medium">jam per sesi</p></div>
-          <div class="stat-card"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">Karyawan</p><p id="stat-jumlah-karyawan" class="text-3xl font-black text-violet-600">—</p><p class="text-xs text-stone-400 mt-1 font-medium">dalam filter</p></div>
+          <div class="stat-card"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">Total Hadir</p><p id="stat-total-hadir" class="text-3xl font-black text-stone-900">-</p><p class="text-xs text-stone-400 mt-1 font-medium">sesi absensi</p></div>
+          <div class="stat-card"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">Total Jam</p><p id="stat-total-jam" class="text-3xl font-black text-brand-700">-</p><p class="text-xs text-stone-400 mt-1 font-medium">jam kerja</p></div>
+          <div class="stat-card"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">Rata-rata/Sesi</p><p id="stat-avg-jam" class="text-3xl font-black text-blue-600">-</p><p class="text-xs text-stone-400 mt-1 font-medium">jam per sesi</p></div>
+          <div class="stat-card"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">Karyawan</p><p id="stat-jumlah-karyawan" class="text-3xl font-black text-violet-600">-</p><p class="text-xs text-stone-400 mt-1 font-medium">dalam filter</p></div>
         </div>
         <div class="glass rounded-[24px] border border-brand-100 shadow-xl shadow-stone-200/50 overflow-hidden">
           <div class="px-6 py-4 border-b border-brand-100 flex items-center justify-between"><div><h3 class="font-extrabold text-stone-900">Data Absensi</h3><p id="rekap-count-label" class="text-xs text-stone-400 font-medium mt-0.5">Belum dimuat</p></div><div id="rekap-loading" style="display:none"><div class="loading-spinner h-5 w-5 rounded-full border-2 border-brand-500 border-t-transparent"></div></div></div>
@@ -728,12 +752,12 @@ CATATAN SETUP (baca sebelum deploy):
             <div class="flex-1 min-w-[140px]"><label class="mb-1.5 block text-xs font-bold uppercase tracking-[0.2em] text-stone-500">Sampai Tanggal</label><input type="date" id="gaji-sampai" class="input-field" readonly style="background:#f5f5f4;cursor:not-allowed;"></div>
             <button id="btn-gaji-hitung" onclick="loadRekapGaji()" class="btn-purple flex items-center gap-2 whitespace-nowrap"><i class="fas fa-calculator text-xs"></i> Hitung Gaji</button>
           </div>
-          <p class="text-[10px] text-stone-400 font-medium mt-2"><i class="fas fa-info-circle mr-1"></i>Dari Tanggal: hanya tanggal 1 atau 16. Sampai Tanggal otomatis (1→15, 16→akhir bulan).</p>
+          <p class="text-[10px] text-stone-400 font-medium mt-2"><i class="fas fa-info-circle mr-1"></i>Dari Tanggal: hanya tanggal 1 atau 16. Sampai Tanggal otomatis (1â†’15, 16â†’akhir bulan).</p>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-5">
-          <div class="stat-card admin-only-gaji"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">Total Karyawan</p><p id="gaji-stat-karyawan" class="text-3xl font-black text-violet-600">—</p></div>
-          <div class="stat-card"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">Total Jam Kerja</p><p id="gaji-stat-jam" class="text-3xl font-black text-brand-700">—</p></div>
-          <div class="stat-card col-span-2 md:col-span-1"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">Total Gaji</p><p id="gaji-stat-total" class="text-2xl font-black text-emerald-600">—</p></div>
+          <div class="stat-card admin-only-gaji"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">Total Karyawan</p><p id="gaji-stat-karyawan" class="text-3xl font-black text-violet-600">-</p></div>
+          <div class="stat-card"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">Total Jam Kerja</p><p id="gaji-stat-jam" class="text-3xl font-black text-brand-700">-</p></div>
+          <div class="stat-card col-span-2 md:col-span-1"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">Total Gaji</p><p id="gaji-stat-total" class="text-2xl font-black text-emerald-600">-</p></div>
         </div>
         <div class="glass rounded-[24px] border border-brand-100 shadow-xl shadow-stone-200/50 overflow-hidden mb-5">
           <div class="px-6 py-4 border-b border-brand-100 flex items-center justify-between"><div><h3 class="font-extrabold text-stone-900">Rekap Gaji Karyawan</h3><p id="gaji-count-label" class="text-xs text-stone-400 font-medium mt-0.5">Belum dimuat</p></div><div id="gaji-loading" style="display:none"><div class="loading-spinner h-5 w-5 rounded-full border-2 border-violet-500 border-t-transparent"></div></div></div>
@@ -753,12 +777,12 @@ CATATAN SETUP (baca sebelum deploy):
             <div class="flex-1 min-w-[140px]"><label class="mb-1.5 block text-xs font-bold uppercase tracking-[0.2em] text-stone-500">Sampai Tanggal</label><input type="date" id="ranking-sampai" class="input-field" readonly style="background:#f5f5f4;cursor:not-allowed;"></div>
             <button onclick="loadRankingAbsensi()" class="btn-primary flex items-center gap-2 whitespace-nowrap"><i class="fas fa-trophy text-xs"></i> Tampilkan Ranking</button>
           </div>
-          <p class="text-[10px] text-stone-400 font-medium mt-2"><i class="fas fa-info-circle mr-1"></i>Dari Tanggal: hanya tanggal 1 atau 16. Sampai Tanggal otomatis (1→15, 16→akhir bulan).</p>
+          <p class="text-[10px] text-stone-400 font-medium mt-2"><i class="fas fa-info-circle mr-1"></i>Dari Tanggal: hanya tanggal 1 atau 16. Sampai Tanggal otomatis (1â†’15, 16â†’akhir bulan).</p>
         </div>
         <div class="grid grid-cols-3 gap-3 mb-5">
-          <div class="stat-card text-center"><div class="h-10 w-10 rounded-xl bg-amber-100 flex items-center justify-center text-amber-600 mx-auto mb-2"><i class="fas fa-crown"></i></div><p id="ranking-stat-top" class="text-2xl font-black text-amber-600">—</p><p class="text-xs font-semibold text-stone-400 mt-1">Top 1</p></div>
-          <div class="stat-card text-center"><div class="h-10 w-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 mx-auto mb-2"><i class="fas fa-users"></i></div><p id="ranking-stat-total" class="text-2xl font-black text-blue-600">—</p><p class="text-xs font-semibold text-stone-400 mt-1">Total Peserta</p></div>
-          <div class="stat-card text-center"><div class="h-10 w-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600 mx-auto mb-2"><i class="fas fa-clock"></i></div><p id="ranking-stat-jam" class="text-2xl font-black text-emerald-600">—</p><p class="text-xs font-semibold text-stone-400 mt-1">Total Jam</p></div>
+          <div class="stat-card text-center"><div class="h-10 w-10 rounded-xl bg-amber-100 flex items-center justify-center text-amber-600 mx-auto mb-2"><i class="fas fa-crown"></i></div><p id="ranking-stat-top" class="text-2xl font-black text-amber-600">-</p><p class="text-xs font-semibold text-stone-400 mt-1">Top 1</p></div>
+          <div class="stat-card text-center"><div class="h-10 w-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 mx-auto mb-2"><i class="fas fa-users"></i></div><p id="ranking-stat-total" class="text-2xl font-black text-blue-600">-</p><p class="text-xs font-semibold text-stone-400 mt-1">Total Peserta</p></div>
+          <div class="stat-card text-center"><div class="h-10 w-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600 mx-auto mb-2"><i class="fas fa-clock"></i></div><p id="ranking-stat-jam" class="text-2xl font-black text-emerald-600">-</p><p class="text-xs font-semibold text-stone-400 mt-1">Total Jam</p></div>
         </div>
         <div class="glass rounded-[24px] border border-brand-100 shadow-xl shadow-stone-200/50 overflow-hidden">
           <div class="px-6 py-4 border-b border-brand-100 flex items-center justify-between"><div><h3 class="font-extrabold text-stone-900">Leaderboard Absensi</h3><p id="ranking-count-label" class="text-xs text-stone-400 font-medium mt-0.5">Belum dimuat</p></div><div id="ranking-loading" style="display:none"><div class="loading-spinner h-5 w-5 rounded-full border-2 border-amber-500 border-t-transparent"></div></div></div>
@@ -796,9 +820,9 @@ CATATAN SETUP (baca sebelum deploy):
           </div>
         </div>
         <div class="grid grid-cols-3 gap-3 mb-5">
-          <div class="stat-card text-center"><div class="h-10 w-10 rounded-xl bg-amber-100 flex items-center justify-center text-amber-600 mx-auto mb-2"><i class="fas fa-clock"></i></div><p id="cuti-stat-pending" class="text-2xl font-black text-amber-600">—</p><p class="text-xs font-semibold text-stone-400 mt-1">Pending</p></div>
-          <div class="stat-card text-center"><div class="h-10 w-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600 mx-auto mb-2"><i class="fas fa-check-circle"></i></div><p id="cuti-stat-approved" class="text-2xl font-black text-emerald-600">—</p><p class="text-xs font-semibold text-stone-400 mt-1">Approved</p></div>
-          <div class="stat-card text-center"><div class="h-10 w-10 rounded-xl bg-rose-100 flex items-center justify-center text-rose-600 mx-auto mb-2"><i class="fas fa-times-circle"></i></div><p id="cuti-stat-rejected" class="text-2xl font-black text-rose-600">—</p><p class="text-xs font-semibold text-stone-400 mt-1">Rejected</p></div>
+          <div class="stat-card text-center"><div class="h-10 w-10 rounded-xl bg-amber-100 flex items-center justify-center text-amber-600 mx-auto mb-2"><i class="fas fa-clock"></i></div><p id="cuti-stat-pending" class="text-2xl font-black text-amber-600">-</p><p class="text-xs font-semibold text-stone-400 mt-1">Pending</p></div>
+          <div class="stat-card text-center"><div class="h-10 w-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600 mx-auto mb-2"><i class="fas fa-check-circle"></i></div><p id="cuti-stat-approved" class="text-2xl font-black text-emerald-600">-</p><p class="text-xs font-semibold text-stone-400 mt-1">Approved</p></div>
+          <div class="stat-card text-center"><div class="h-10 w-10 rounded-xl bg-rose-100 flex items-center justify-center text-rose-600 mx-auto mb-2"><i class="fas fa-times-circle"></i></div><p id="cuti-stat-rejected" class="text-2xl font-black text-rose-600">-</p><p class="text-xs font-semibold text-stone-400 mt-1">Rejected</p></div>
         </div>
         <div class="glass rounded-[24px] border border-brand-100 shadow-xl shadow-stone-200/50 overflow-hidden">
           <div class="px-6 py-4 border-b border-brand-100 flex items-center justify-between"><div><h3 class="font-extrabold text-stone-900">Riwayat Pengajuan Cuti</h3><p id="statuscuti-count-label" class="text-xs text-stone-400 font-medium mt-0.5">Belum dimuat</p></div><div id="statuscuti-loading" style="display:none"><div class="loading-spinner h-5 w-5 rounded-full border-2 border-amber-500 border-t-transparent"></div></div></div>
@@ -956,7 +980,7 @@ CATATAN SETUP (baca sebelum deploy):
               <div><p class="text-xs font-bold uppercase tracking-widest text-amber-700">Roxwood Kingdom System</p><h2 class="text-lg font-extrabold text-stone-900">Spreadsheet Formatter</h2><p class="text-xs text-stone-500 mt-0.5">Tempel teks pendaftaran, ubah jadi format tab-separated</p></div>
             </div>
 
-            <label class="mb-1.5 block text-sm font-semibold text-stone-600">Input — Teks Format Smart Card</label>
+            <label class="mb-1.5 block text-sm font-semibold text-stone-600">Input - Teks Format Smart Card</label>
             <textarea id="fmt-input" rows="10" oninput="fmtScheduleConvert()" class="input-field font-mono text-xs leading-relaxed" placeholder="FORMAT PEMBUATAN SMART CARD ROXWOOD
 NAMA LENGKAP         : 
 TEMPAT TANGGAL LAHIR : 
@@ -997,10 +1021,10 @@ KEPERLUAN            : PEMBUATAN SMART CARD ROXWOOD"></textarea>
                   <button id="fmt-btnCopyKta" onclick="fmtCopyKta()" class="btn-secondary py-1.5 px-3 text-xs flex items-center gap-1.5"><i class="fas fa-copy text-[10px]"></i> Salin KTA</button>
                 </div>
                 <div id="fmt-outputKta" class="bg-stone-900 text-amber-200 rounded-xl px-4 py-3 font-mono text-xs whitespace-pre overflow-x-auto min-h-[48px] leading-relaxed"><span class="text-stone-500">Hasil KTA akan muncul setelah konversi...</span></div>
-                <p class="text-[10px] text-stone-400 font-medium mt-2">Kolom: Jabatan • Masa Expired KTA (2 Bulan)</p>
+                <p class="text-[10px] text-stone-400 font-medium mt-2">Kolom: Jabatan â€¢ Masa Expired KTA (2 Bulan)</p>
               </div>
 
-              <p class="text-[10px] text-stone-400 font-medium mt-3">Kolom: Nama Lengkap • Tanggal Lahir • Pekerjaan • Masa Berlaku • Masa Expired • No HP</p>
+              <p class="text-[10px] text-stone-400 font-medium mt-3">Kolom: Nama Lengkap â€¢ Tanggal Lahir â€¢ Pekerjaan â€¢ Masa Berlaku â€¢ Masa Expired â€¢ No HP</p>
 
               <div class="pt-3 mt-2 border-t border-brand-100"><button type="button" id="fmt-btnExport" onclick="fmtExportData()" class="btn-primary w-full flex items-center justify-center gap-2"><i class="fas fa-file-export"></i> Export Data ke Penerbitan Smart Card</button></div>
             </div>
@@ -1008,11 +1032,11 @@ KEPERLUAN            : PEMBUATAN SMART CARD ROXWOOD"></textarea>
             <div class="glass rounded-[28px] border border-brand-100 p-6 shadow-xl shadow-stone-200/50" id="fmt-websiteCard" style="display:none;">
               <p class="text-xs font-bold uppercase tracking-widest text-stone-500 mb-3">Input Website</p>
               <div class="space-y-2">
-                <div class="flex items-center gap-2 bg-brand-50 border border-brand-100 rounded-xl px-3 py-2"><span class="text-[10px] font-bold uppercase tracking-wide text-stone-500 w-24 flex-shrink-0">Nama</span><span id="fmt-wNama" class="flex-1 font-mono text-xs text-stone-800 truncate">—</span></div>
+                <div class="flex items-center gap-2 bg-brand-50 border border-brand-100 rounded-xl px-3 py-2"><span class="text-[10px] font-bold uppercase tracking-wide text-stone-500 w-24 flex-shrink-0">Nama</span><span id="fmt-wNama" class="flex-1 font-mono text-xs text-stone-800 truncate">-</span></div>
                 <div class="flex items-center gap-2 bg-brand-50 border border-brand-100 rounded-xl px-3 py-2"><span class="text-[10px] font-bold uppercase tracking-wide text-stone-500 w-24 flex-shrink-0">Kota</span><span id="fmt-wKota" class="flex-1 font-mono text-xs text-stone-800 truncate">ROXWOOD</span></div>
-                <div class="flex items-center gap-2 bg-brand-50 border border-brand-100 rounded-xl px-3 py-2"><span class="text-[10px] font-bold uppercase tracking-wide text-stone-500 w-24 flex-shrink-0">Tgl Lahir</span><span id="fmt-wTgl" class="flex-1 font-mono text-xs text-stone-800 truncate">—</span></div>
+                <div class="flex items-center gap-2 bg-brand-50 border border-brand-100 rounded-xl px-3 py-2"><span class="text-[10px] font-bold uppercase tracking-wide text-stone-500 w-24 flex-shrink-0">Tgl Lahir</span><span id="fmt-wTgl" class="flex-1 font-mono text-xs text-stone-800 truncate">-</span></div>
                 <div class="flex items-center gap-2 bg-brand-50 border border-brand-100 rounded-xl px-3 py-2"><span class="text-[10px] font-bold uppercase tracking-wide text-stone-500 w-24 flex-shrink-0">Nationality</span><span id="fmt-wNat" class="flex-1 font-mono text-xs text-stone-800 truncate">INDOPRIDE</span></div>
-                <div class="flex items-center gap-2 bg-brand-50 border border-brand-100 rounded-xl px-3 py-2"><span class="text-[10px] font-bold uppercase tracking-wide text-stone-500 w-24 flex-shrink-0">Pekerjaan</span><span id="fmt-wPekerjaan" class="flex-1 font-mono text-xs text-stone-800 truncate">—</span></div>
+                <div class="flex items-center gap-2 bg-brand-50 border border-brand-100 rounded-xl px-3 py-2"><span class="text-[10px] font-bold uppercase tracking-wide text-stone-500 w-24 flex-shrink-0">Pekerjaan</span><span id="fmt-wPekerjaan" class="flex-1 font-mono text-xs text-stone-800 truncate">-</span></div>
               </div>
             </div>
           </div>
@@ -1032,11 +1056,11 @@ KEPERLUAN            : PEMBUATAN SMART CARD ROXWOOD"></textarea>
           </div>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-5">
-          <div class="stat-card"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">Total Transaksi</p><p id="setoran-stat-total" class="text-3xl font-black text-stone-900">—</p><p class="text-xs text-stone-400 mt-1 font-medium">kartu baru</p></div>
-          <div class="stat-card"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">1 Bulan</p><p id="setoran-stat-1bulan" class="text-3xl font-black text-blue-600">—</p><p class="text-xs text-stone-400 mt-1 font-medium">$IDP 10.000 / kartu</p></div>
-          <div class="stat-card"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">1 Tahun</p><p id="setoran-stat-1tahun" class="text-3xl font-black text-violet-600">—</p><p class="text-xs text-stone-400 mt-1 font-medium">$IDP 30.000 / kartu</p></div>
-          <div class="stat-card"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">Total KTA</p><p id="setoran-stat-kta" class="text-3xl font-black text-amber-600">—</p><p class="text-xs text-stone-400 mt-1 font-medium">$IDP 10.000 / KTA</p></div>
-          <div class="stat-card"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">Total Setoran</p><p id="setoran-stat-nominal" class="text-2xl font-black text-emerald-600">—</p><p class="text-xs text-stone-400 mt-1 font-medium">akumulasi periode</p></div>
+          <div class="stat-card"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">Total Transaksi</p><p id="setoran-stat-total" class="text-3xl font-black text-stone-900">-</p><p class="text-xs text-stone-400 mt-1 font-medium">kartu baru</p></div>
+          <div class="stat-card"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">1 Bulan</p><p id="setoran-stat-1bulan" class="text-3xl font-black text-blue-600">-</p><p class="text-xs text-stone-400 mt-1 font-medium">$IDP 10.000 / kartu</p></div>
+          <div class="stat-card"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">1 Tahun</p><p id="setoran-stat-1tahun" class="text-3xl font-black text-violet-600">-</p><p class="text-xs text-stone-400 mt-1 font-medium">$IDP 30.000 / kartu</p></div>
+          <div class="stat-card"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">Total KTA</p><p id="setoran-stat-kta" class="text-3xl font-black text-amber-600">-</p><p class="text-xs text-stone-400 mt-1 font-medium">$IDP 10.000 / KTA</p></div>
+          <div class="stat-card"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">Total Setoran</p><p id="setoran-stat-nominal" class="text-2xl font-black text-emerald-600">-</p><p class="text-xs text-stone-400 mt-1 font-medium">akumulasi periode</p></div>
         </div>
         <div class="glass rounded-[24px] border border-brand-100 shadow-xl shadow-stone-200/50 overflow-hidden">
           <div class="px-6 py-4 border-b border-brand-100 flex items-center justify-between"><div><h3 class="font-extrabold text-stone-900">Rekap Setoran Smart Card</h3><p id="setoran-count-label" class="text-xs text-stone-400 font-medium mt-0.5">Belum dimuat</p></div><div id="setoran-loading" style="display:none"><div class="loading-spinner h-5 w-5 rounded-full border-2 border-brand-500 border-t-transparent"></div></div></div>
@@ -1104,6 +1128,88 @@ KEPERLUAN            : PEMBUATAN SMART CARD ROXWOOD"></textarea>
         </div>
       </div>
 
+      <!-- FINANCE OVERVIEW -->
+      <div id="page-finance-overview" class="page">
+        <div class="mb-5 flex items-center justify-between gap-3">
+          <div><p class="text-xs font-bold uppercase tracking-[0.25em] text-emerald-600">Finance</p><h2 class="text-2xl font-extrabold tracking-tight text-stone-900">Overview Finance</h2><p class="text-sm text-stone-500 mt-0.5">Ringkasan pemasukan, pengeluaran, saldo, dan tren transaksi finance.</p></div>
+          <button onclick="loadFinanceOverview()" class="btn-secondary flex items-center gap-2 whitespace-nowrap flex-shrink-0"><i class="fas fa-rotate text-xs"></i> Refresh</button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-5">
+          <div class="stat-card"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">Total Pemasukan</p><p id="finance-stat-income" class="text-2xl font-black text-emerald-600">-</p><p class="text-xs text-stone-400 mt-1 font-medium">semua periode</p></div>
+          <div class="stat-card"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">Total Pengeluaran</p><p id="finance-stat-expense" class="text-2xl font-black text-rose-600">-</p><p class="text-xs text-stone-400 mt-1 font-medium">semua periode</p></div>
+          <div class="stat-card"><p class="text-xs font-bold uppercase tracking-[0.18em] text-stone-400 mb-2">Saldo</p><p id="finance-stat-balance" class="text-2xl font-black text-brand-700">-</p><p class="text-xs text-stone-400 mt-1 font-medium">pemasukan - pengeluaran</p></div>
+        </div>
+        <div class="grid gap-5 lg:grid-cols-2">
+          <div class="glass rounded-[24px] border border-brand-100 p-6 shadow-xl shadow-stone-200/50">
+            <div class="mb-4 flex items-center justify-between"><div><h3 class="font-extrabold text-stone-900">Chart Diagram</h3><p class="text-xs text-stone-400 font-medium mt-0.5">Komposisi pemasukan vs pengeluaran</p></div><i class="fas fa-chart-pie text-emerald-600"></i></div>
+            <canvas id="finance-diagram-chart" width="520" height="300" class="w-full max-h-[300px]"></canvas>
+          </div>
+          <div class="glass rounded-[24px] border border-brand-100 p-6 shadow-xl shadow-stone-200/50">
+            <div class="mb-4 flex items-center justify-between"><div><h3 class="font-extrabold text-stone-900">Clustered Column</h3><p class="text-xs text-stone-400 font-medium mt-0.5">Perbandingan harian pemasukan dan pengeluaran</p></div><i class="fas fa-chart-column text-blue-600"></i></div>
+            <canvas id="finance-line-chart" width="640" height="300" class="w-full max-h-[300px]"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- FINANCE INCOME -->
+      <div id="page-finance-income" class="page">
+        <div class="max-w-2xl mx-auto">
+          <div class="glass rounded-[28px] border border-brand-100 p-6 md:p-8 shadow-xl shadow-stone-200/50">
+            <div class="mb-6 flex items-start gap-4"><div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center text-white shadow-lg flex-shrink-0"><i class="fas fa-arrow-down text-lg"></i></div><div><p class="text-xs font-bold uppercase tracking-[0.25em] text-emerald-600">Finance</p><h2 class="text-xl font-extrabold tracking-tight text-stone-900">Pencatatan Pemasukan</h2></div></div>
+            <div class="space-y-4">
+              <div class="grid grid-cols-2 gap-3">
+                <div><label class="mb-1.5 block text-sm font-semibold text-stone-600">Tanggal <span class="text-rose-500">*</span></label><input id="finance-income-tanggal" type="date" class="input-field"></div>
+                <div><label class="mb-1.5 block text-sm font-semibold text-stone-600">Nominal <span class="text-rose-500">*</span></label><input id="finance-income-nominal" type="text" inputmode="numeric" class="input-field" placeholder="Contoh: 100.000"></div>
+              </div>
+              <div><label class="mb-1.5 block text-sm font-semibold text-stone-600">Kategori <span class="text-rose-500">*</span></label><input id="finance-income-kategori" type="text" class="input-field" placeholder="Contoh: Setoran, Donasi, Pendapatan"></div>
+              <div><label class="mb-1.5 block text-sm font-semibold text-stone-600">Keterangan</label><textarea id="finance-income-keterangan" rows="3" class="input-field resize-none" placeholder="Catatan singkat pemasukan"></textarea></div>
+              <div class="pt-2"><button id="btn-submit-finance-income" onclick="submitFinance('income')" class="btn-primary w-full flex items-center justify-center gap-2"><i class="fas fa-save text-sm"></i> Simpan Pemasukan</button></div>
+              <p class="text-xs text-stone-400 font-medium"><i class="fas fa-circle-info mr-1"></i>Riwayat pemasukan yang sudah disimpan dapat dilihat di History Finance.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FINANCE EXPENSE -->
+      <div id="page-finance-expense" class="page">
+        <div class="max-w-2xl mx-auto">
+          <div class="glass rounded-[28px] border border-brand-100 p-6 md:p-8 shadow-xl shadow-stone-200/50">
+            <div class="mb-6 flex items-start gap-4"><div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-rose-500 to-red-700 flex items-center justify-center text-white shadow-lg flex-shrink-0"><i class="fas fa-arrow-up text-lg"></i></div><div><p class="text-xs font-bold uppercase tracking-[0.25em] text-rose-600">Finance</p><h2 class="text-xl font-extrabold tracking-tight text-stone-900">Pencatatan Pengeluaran</h2></div></div>
+            <div class="space-y-4">
+              <div class="grid grid-cols-2 gap-3">
+                <div><label class="mb-1.5 block text-sm font-semibold text-stone-600">Tanggal <span class="text-rose-500">*</span></label><input id="finance-expense-tanggal" type="date" class="input-field"></div>
+                <div><label class="mb-1.5 block text-sm font-semibold text-stone-600">Nominal <span class="text-rose-500">*</span></label><input id="finance-expense-nominal" type="text" inputmode="numeric" class="input-field" placeholder="Contoh: 100.000"></div>
+              </div>
+              <div><label class="mb-1.5 block text-sm font-semibold text-stone-600">Kategori <span class="text-rose-500">*</span></label><input id="finance-expense-kategori" type="text" class="input-field" placeholder="Contoh: Operasional, Bonus, Perlengkapan"></div>
+              <div><label class="mb-1.5 block text-sm font-semibold text-stone-600">Keterangan</label><textarea id="finance-expense-keterangan" rows="3" class="input-field resize-none" placeholder="Catatan singkat pengeluaran"></textarea></div>
+              <div class="pt-2"><button id="btn-submit-finance-expense" onclick="submitFinance('expense')" class="btn-primary w-full flex items-center justify-center gap-2"><i class="fas fa-save text-sm"></i> Simpan Pengeluaran</button></div>
+              <p class="text-xs text-stone-400 font-medium"><i class="fas fa-circle-info mr-1"></i>Riwayat pengeluaran yang sudah disimpan dapat dilihat di History Finance.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FINANCE HISTORY -->
+      <div id="page-finance-history" class="page">
+        <div class="mb-5 flex items-center justify-between gap-3">
+          <div><p class="text-xs font-bold uppercase tracking-[0.25em] text-brand-600">Finance</p><h2 class="text-2xl font-extrabold tracking-tight text-stone-900">History Finance</h2><p class="text-sm text-stone-500 mt-0.5">Riwayat khusus pemasukan dan pengeluaran Finance.</p></div>
+          <button onclick="loadHistory()" class="btn-secondary flex items-center gap-2 whitespace-nowrap flex-shrink-0"><i class="fas fa-rotate text-xs"></i> Refresh</button>
+        </div>
+        <div class="glass rounded-[24px] border border-brand-100 p-5 shadow-xl shadow-stone-200/50 mb-5">
+          <div class="flex flex-wrap items-end gap-3">
+            <div class="flex-1 min-w-[160px]"><label class="mb-1.5 block text-xs font-bold uppercase tracking-[0.2em] text-stone-500">Jenis Transaksi</label><select id="history-filter-type" class="input-field pr-10"><option value="">Semua Transaksi</option><option value="income">Pemasukan</option><option value="expense">Pengeluaran</option></select></div>
+            <div class="flex-1 min-w-[130px]"><label class="mb-1.5 block text-xs font-bold uppercase tracking-[0.2em] text-stone-500">Dari Tanggal</label><input type="date" id="history-dari" class="input-field"></div>
+            <div class="flex-1 min-w-[130px]"><label class="mb-1.5 block text-xs font-bold uppercase tracking-[0.2em] text-stone-500">Sampai Tanggal</label><input type="date" id="history-sampai" class="input-field"></div>
+            <button onclick="loadHistory()" class="btn-primary flex items-center gap-2 whitespace-nowrap"><i class="fas fa-search text-xs"></i> Tampilkan</button>
+            <button onclick="resetHistory()" class="btn-secondary flex items-center gap-2 whitespace-nowrap"><i class="fas fa-rotate-left text-xs"></i> Reset</button>
+          </div>
+        </div>
+        <div class="glass rounded-[24px] border border-brand-100 shadow-xl shadow-stone-200/50 overflow-hidden">
+          <div class="px-6 py-4 border-b border-brand-100 flex items-center justify-between"><div><h3 class="font-extrabold text-stone-900">Daftar History Finance</h3><p id="history-count-label" class="text-xs text-stone-400 font-medium mt-0.5">Belum dimuat</p></div><div id="history-loading" style="display:none"><div class="loading-spinner h-5 w-5 rounded-full border-2 border-brand-500 border-t-transparent"></div></div></div>
+          <div class="table-wrapper rounded-none border-0"><table class="data-table w-full border-collapse"><thead><tr><th class="text-left">Tanggal</th><th class="text-left">Jenis</th><th class="text-left">Petugas</th><th class="text-left">Kategori</th><th class="text-left">Nominal</th><th class="text-left">Keterangan</th><th class="text-left">Aksi</th></tr></thead><tbody id="history-tbody"><tr><td colspan="7" class="text-center text-stone-400 py-12"><i class="fas fa-clock-rotate-left text-3xl text-stone-200 block mb-2"></i>Tekan Tampilkan untuk memuat history finance</td></tr></tbody></table></div>
+        </div>
+      </div>
+
       <!-- KELOLA AKUN -->
       <div id="page-kelola" class="page">
         <div class="grid lg:grid-cols-2 gap-6">
@@ -1148,11 +1254,11 @@ KEPERLUAN            : PEMBUATAN SMART CARD ROXWOOD"></textarea>
       </div>
 
     </main>
-    <footer class="px-4 py-5 text-center text-[11px] font-bold uppercase tracking-[0.22em] text-stone-400 md:px-6">&copy; 2026 Kabinet Roxwood — Sistem Absensi</footer>
+    <footer class="px-4 py-5 text-center text-[11px] font-bold uppercase tracking-[0.22em] text-stone-400 md:px-6">&copy; 2026 Kabinet Roxwood - Sistem Absensi</footer>
   </div>
 </div>
 
-<!-- ═══ FIREBASE AUTHENTICATION (hanya untuk login/logout, profil tetap di Cloudflare D1) ═══ -->
+<!-- â•â•â• FIREBASE AUTHENTICATION (hanya untuk login/logout, profil tetap di Cloudflare D1) â•â•â• -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
   import {
@@ -1166,6 +1272,15 @@ KEPERLUAN            : PEMBUATAN SMART CARD ROXWOOD"></textarea>
     reauthenticateWithCredential,
     updatePassword
   } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  import {
+    getFirestore,
+    collection,
+    getDocs,
+    doc,
+    setDoc,
+    updateDoc,
+    deleteDoc
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyALEyaERZcY0S2wZ7EyR3GHqQsmR9rBwbg",
@@ -1178,9 +1293,10 @@ KEPERLUAN            : PEMBUATAN SMART CARD ROXWOOD"></textarea>
 
   const fbApp  = initializeApp(firebaseConfig);
   const fbAuth = getAuth(fbApp);
+  const fbStore = getFirestore(fbApp);
 
   // Jembatan ke script utama (non-module) lewat window.FirebaseAuth.
-  // Semua fungsi mengembalikan Promise dan TIDAK mengubah logic LocalDB/D1 —
+  // Semua fungsi mengembalikan Promise dan TIDAK mengubah logic LocalDB/D1 -
   // hanya menggantikan pengecekan email/password manual di LocalDB.users.
   window.FirebaseAuth = {
     async signIn(email, password) {
@@ -1217,16 +1333,32 @@ KEPERLUAN            : PEMBUATAN SMART CARD ROXWOOD"></textarea>
     }
   };
 
+  window.FirebaseFinance = {
+    async list() {
+      const snap = await getDocs(collection(fbStore, 'finance'));
+      return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    },
+    async set(id, data) {
+      await setDoc(doc(fbStore, 'finance', id), data);
+    },
+    async update(id, patch) {
+      await updateDoc(doc(fbStore, 'finance', id), patch);
+    },
+    async remove(id) {
+      await deleteDoc(doc(fbStore, 'finance', id));
+    }
+  };
+
   // Sinyal bahwa Firebase sudah siap dipakai oleh script utama.
   window.dispatchEvent(new Event('firebase-ready'));
 </script>
 
 <script>
-// ════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // KONFIGURASI WEBHOOK DISCORD
 // Foto bukti Clock In/Out dikirim ke sini (multipart/form-data),
 // TIDAK disimpan di manapun di sisi aplikasi.
-// ════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 const WEBHOOK_CONFIG = {
   absensi: "https://discord.com/api/webhooks/1518128522743382128/gcmsDankavPPOMYfZwaa571-xN2TUAmiRa5tIq688qXwexVBYMoRwChtfqEsXEbWKhpi",
   cuti: "https://discord.com/api/webhooks/1518277415049105438/Ehcp1Tc0Ihj-r0K8WAkXF5lAC-D7JfqUlhOgufKHhvhLurnd5WFq6hGzoI5z1DkpkdX-",
@@ -1234,18 +1366,18 @@ const WEBHOOK_CONFIG = {
   hasil_creative: "https://discord.com/api/webhooks/1518633094171857127/FXJeBQKXLlXXto3otLRE2khMt6Inzqz3gKJznJTKsX4B1tHrxYcSph-mcI0O02qnKFll"
 };
 
-// ⚠️ ISI DENGAN ID ROLE DISCORD @HR AGAR TAG BEKERJA OTOMATIS
-// Cara dapat: Settings → Role → klik kanan → Copy ID (aktifkan Developer Mode dulu di Discord Settings → Advanced)
+// âš ï¸ ISI DENGAN ID ROLE DISCORD @HR AGAR TAG BEKERJA OTOMATIS
+// Cara dapat: Settings â†’ Role â†’ klik kanan â†’ Copy ID (aktifkan Developer Mode dulu di Discord Settings â†’ Advanced)
 const DISCORD_HR_ROLE_ID = "1517704014056132608";  // @HR role ID
 
-// ════════════════════════════════════════════════════════════════════
-// DATABASE — Cloudflare D1 via Worker API, dengan cache in-memory.
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// DATABASE - Cloudflare D1 via Worker API, dengan cache in-memory.
 // LocalDB.<collection>.all()/.add()/.update()/.remove() TETAP SINKRON
 // (baca dari cache) agar semua pemanggil di aplikasi tidak perlu diubah.
 // Setiap add/update/remove: cache diperbarui dulu (instan), lalu dikirim
 // ke D1 di background lewat fetch(). Saat boot, semua collection di-
 // fetch dari D1 untuk mengisi cache (lihat initDbCache() di bawah).
-// ════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 const API_BASE = 'https://roxwood-api.roxwood-api.workers.dev';
 const _cache = { users: [], absensi: [], cuti: [], setoran: [], hasil_kerja: [], jabatan_history: [] };
 function _newId(prefix) { return prefix+'_'+Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
@@ -1289,7 +1421,91 @@ function _makeCollection(name) {
   };
 }
 
-const LocalDB = {
+function normalizeFinanceRecord(id, data) {
+  if (!data) return null;
+  return Object.assign({}, data, {
+    id: data.id || id,
+    tipe: 'finance',
+    finance_type: data.finance_type === 'expense' ? 'expense' : 'income',
+    nominal: Number(data.nominal) || 0
+  });
+}
+
+function loadFinanceLocalCache() {
+  try {
+    const cached = JSON.parse(localStorage.getItem('roxwood_finance_cache') || '[]');
+    if (!Array.isArray(cached)) return;
+    const rows = cached.map(row => normalizeFinanceRecord(row.id, row)).filter(Boolean);
+    _cache.hasil_kerja = [
+      ..._cache.hasil_kerja.filter(x => x.tipe !== 'finance'),
+      ...rows
+    ];
+  } catch (err) {
+    console.warn('[Finance cache] Gagal membaca cache lokal:', err.message || err);
+  }
+}
+
+function saveFinanceLocalCache(rows) {
+  try {
+    localStorage.setItem('roxwood_finance_cache', JSON.stringify(rows || LocalDB.finance.all()));
+  } catch (err) {
+    console.warn('[Finance cache] Gagal menyimpan cache lokal:', err.message || err);
+  }
+}
+
+async function waitForFirebaseFinance() {
+  if (window.FirebaseFinance) return window.FirebaseFinance;
+  await new Promise(resolve => window.addEventListener('firebase-ready', resolve, { once: true }));
+  return window.FirebaseFinance;
+}
+
+async function loadFinanceFromDb() {
+  try {
+    const financeApi = await waitForFirebaseFinance();
+    if (!financeApi) throw new Error('FirebaseFinance belum siap');
+    const financeRows = (await financeApi.list()).map(row => normalizeFinanceRecord(row.id, row)).filter(Boolean);
+    if (financeRows.length || !LocalDB.finance.all().length) {
+      _cache.hasil_kerja = [
+        ..._cache.hasil_kerja.filter(x => x.tipe !== 'finance'),
+        ...financeRows
+      ];
+      if (financeRows.length) saveFinanceLocalCache(financeRows);
+    }
+    console.log(`[Finance DB] loaded: ${financeRows.length} records`);
+  } catch (err) {
+    console.warn('[Finance DB] Gagal memuat finance:', err.message || err);
+  }
+}
+
+async function syncFinanceToDb(row) {
+  try {
+    const financeApi = await waitForFirebaseFinance();
+    if (!financeApi) throw new Error('FirebaseFinance belum siap');
+    await financeApi.set(row.id, row);
+  } catch (err) {
+    console.warn('[Finance DB] Gagal menyimpan finance:', err.message || err);
+  }
+}
+
+async function patchFinanceInDb(id, patch) {
+  try {
+    const financeApi = await waitForFirebaseFinance();
+    if (!financeApi) throw new Error('FirebaseFinance belum siap');
+    await financeApi.update(id, patch);
+  } catch (err) {
+    console.warn('[Finance DB] Gagal update finance:', err.message || err);
+  }
+}
+
+async function deleteFinanceFromDb(id) {
+  try {
+    const financeApi = await waitForFirebaseFinance();
+    if (!financeApi) throw new Error('FirebaseFinance belum siap');
+    await financeApi.remove(id);
+  } catch (err) {
+    console.warn('[Finance DB] Gagal hapus finance:', err.message || err);
+  }
+}const LocalDB = {
   users: Object.assign(_makeCollection('users'), {
     findByEmail(email) { return _cache.users.find(x => x.email === email); }
   }),
@@ -1299,8 +1515,32 @@ const LocalDB = {
   cuti: _makeCollection('cuti'),
   setoran: _makeCollection('setoran'),
   hasil_kerja: _makeCollection('hasil_kerja'),
+  finance: {
+    all() { return _cache.hasil_kerja.filter(x => x.tipe === 'finance'); },
+    add(obj) {
+      const row = Object.assign({
+        id: _newId('fin'),
+        tipe: 'finance',
+        created_at: new Date().toISOString()
+      }, obj);
+      _cache.hasil_kerja = [..._cache.hasil_kerja, row];
+      syncFinanceToDb(row);
+      return row;
+    },
+    update(id, patch) {
+      const i = _cache.hasil_kerja.findIndex(x => x.id === id && x.tipe === 'finance');
+      if (i >= 0) _cache.hasil_kerja[i] = Object.assign({}, _cache.hasil_kerja[i], patch);
+      saveFinanceLocalCache();
+      patchFinanceInDb(id, patch);
+    },
+    remove(id) {
+      _cache.hasil_kerja = _cache.hasil_kerja.filter(x => x.id !== id);
+      saveFinanceLocalCache();
+      deleteFinanceFromDb(id);
+    }
+  },
   jabatan_history: _makeCollection('jabatan_history'),
-  // karyawan sengaja tidak ada di D1 — data nama/jabatan diturunkan
+  // karyawan sengaja tidak ada di D1 - data nama/jabatan diturunkan
   // langsung dari LocalDB.users (lihat loadKaryawan()), jadi tidak perlu
   // tabel terpisah yang berisiko basi.
   karyawan: {
@@ -1332,9 +1572,11 @@ async function initDbCache() {
       _cache[name] = [];
     }
   }));
+  loadFinanceLocalCache();
+  loadFinanceFromDb();
 }
 
-// ── JABATAN & SALARY RATES (Gaji per 3 Jam, dikonversi otomatis ke per menit) ──
+// â”€â”€ JABATAN & SALARY RATES (Gaji per 3 Jam, dikonversi otomatis ke per menit) â”€â”€
 const JABATAN_LIST = ['Ketua Kabinet','Assisten Ketua','Kepala Divisi','Wakil Kepala Divisi','Pengurus I','Pengurus II','Anggota I','Anggota II','Anggota III'];
 const GAJI_PER_3JAM = {
   'Ketua Kabinet':       200000,
@@ -1358,7 +1600,7 @@ let gajiCurrentData = [];
 let lastOpenSessionId = null;
 let pendingPhotoFile = null;
 
-// ── TOAST / SOUND ─────────────────────────────────────────────────
+// â”€â”€ TOAST / SOUND â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 window.showToast = function(type, message) {
   const c = document.getElementById('toast-container');
   const t = document.createElement('div');
@@ -1384,7 +1626,7 @@ function playSound(type) {
   } catch(e) {}
 }
 
-// ── UTIL ───────────────────────────────────────────────────────────
+// â”€â”€ UTIL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function showEl(id) { const el=document.getElementById(id); if(el) el.style.display=''; }
 function hideEl(id) { const el=document.getElementById(id); if(el) el.style.display='none'; }
 function getLocalDateStr() { const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
@@ -1411,7 +1653,7 @@ function jabatanOnDate(idKaryawan, shiftDate, fallback) {
     if (h.tanggal <= shiftDate) jabatan = h.jabatan_baru;
   }
   if (jabatan) return jabatan;
-  // shiftDate is before all changes — use jabatan_lama of first change
+  // shiftDate is before all changes - use jabatan_lama of first change
   return history[0].jabatan_lama || currentJabatanOf(idKaryawan, fallback);
 }
 function formatPeriode(dari, sampai) {
@@ -1421,7 +1663,7 @@ function formatPeriode(dari, sampai) {
   return dari ? `DARI ${fmt(dari)}` : `S/D ${fmt(sampai)}`;
 }
 // Format tanggal tampilan menjadi DD/MM/YYYY. Menerima 'YYYY-MM-DD' atau ISO datetime penuh.
-// Hanya untuk TAMPILAN — penyimpanan/filter tetap pakai format ISO (YYYY-MM-DD) agar perbandingan string tetap benar.
+// Hanya untuk TAMPILAN - penyimpanan/filter tetap pakai format ISO (YYYY-MM-DD) agar perbandingan string tetap benar.
 function fmtTglDisplay(raw) {
   if (!raw) return '-';
   const datePart = String(raw).split('T')[0];
@@ -1430,6 +1672,37 @@ function fmtTglDisplay(raw) {
   const [y, m, d] = parts;
   if (y.length !== 4) return raw;
   return `${d.padStart(2,'0')}/${m.padStart(2,'0')}/${y}`;
+}
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+}
+function formatIDR(value) {
+  const n = Number(value) || 0;
+  return 'Rp ' + n.toLocaleString('id-ID');
+}
+function parseNominalInput(value) {
+  return Number(String(value || '').replace(/[^\d]/g, '')) || 0;
+}
+function formatNominalInputValue(value) {
+  const n = parseNominalInput(value);
+  return n ? n.toLocaleString('id-ID') : '';
+}
+function bindNominalFormatter(id) {
+  const el = document.getElementById(id);
+  if (!el || el.dataset.nominalBound === '1') return;
+  el.dataset.nominalBound = '1';
+  el.addEventListener('input', () => {
+    el.value = formatNominalInputValue(el.value);
+  });
+}
+function normalizeDivisiName(value) {
+  return String(value || '').trim().toLowerCase().replace(/[-_]+/g, ' ').replace(/\s+/g, ' ');
+}
+function canAccessFinance() {
+  if (!currentProfile) return false;
+  if (currentProfile.role === 'admin') return true;
+  const divisi = normalizeDivisiName(currentProfile.divisi);
+  return divisi === 'finance' || divisi === 'non divisi';
 }
 function showLoginScreen() { hideEl('app-screen'); showEl('login-screen'); }
 
@@ -1441,9 +1714,9 @@ window.togglePassVis = function(inputId, btnEl) {
   btnEl.querySelector('i').className = isPass ? 'fas fa-eye-slash text-sm' : 'fas fa-eye text-sm';
 };
 
-// ════════════════════════════════════════════════════════════════════
-// AUTH (mock lokal) — TODO: GANTI DENGAN FIREBASE AUTH saat re-setup
-// ════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// AUTH (mock lokal) - TODO: GANTI DENGAN FIREBASE AUTH saat re-setup
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 function normalizeCompanyEmail(raw) {
   const v = (raw||'').trim().toLowerCase();
   return v.includes('@') ? v : `${v}@roxwood.id`;
@@ -1519,10 +1792,11 @@ function tryAutoLogin() {
   });
 }
 
-// ── RENDER FOR ROLE (logika tunggal, tidak ada duplikasi tampilan) ──
+// â”€â”€ RENDER FOR ROLE (logika tunggal, tidak ada duplikasi tampilan) â”€â”€
 function renderForRole() {
   hideEl('login-screen'); showEl('app-screen');
   const isAdmin = currentProfile.role === 'admin';
+  const financeAllowed = canAccessFinance();
 
   document.getElementById('user-display-name').textContent = currentProfile.nama || currentUser.email;
   document.getElementById('user-role-badge').textContent = isAdmin ? 'Admin' : 'Staff';
@@ -1532,13 +1806,18 @@ function renderForRole() {
   if (adminSec) adminSec.style.display = isAdmin ? '' : 'none';
   hideEl('nav-kelola');
   if (isAdmin) { showEl('nav-kelola'); }
+  const financeSec = document.getElementById('section-finance-nav');
+  if (financeSec) financeSec.style.display = financeAllowed ? '' : 'none';
+  ['nav-finance-overview','nav-finance-income','nav-finance-expense','nav-finance-history'].forEach(id => {
+    if (financeAllowed) showEl(id); else hideEl(id);
+  });
 
   document.getElementById('self-nama').textContent    = currentProfile.nama || '-';
   document.getElementById('self-jabatan').textContent = currentProfile.jabatan || '-';
   document.getElementById('self-id').textContent      = currentProfile.id_karyawan || '-';
 
   // Filter nama hanya relevan untuk Admin (melihat semua aktivitas).
-  // Staff selalu hanya melihat data miliknya sendiri — logika ini TIDAK dihapus.
+  // Staff selalu hanya melihat data miliknya sendiri - logika ini TIDAK dihapus.
   const wrap  = document.getElementById('rekap-filter-nama-wrap');      if (wrap)  wrap.style.display  = isAdmin ? '' : 'none';
   const gWrap = document.getElementById('gaji-filter-nama-wrap');       if (gWrap) gWrap.style.display = isAdmin ? '' : 'none';
   const scWrap= document.getElementById('statuscuti-filter-nama-wrap');if (scWrap)scWrap.style.display= isAdmin ? '' : 'none';
@@ -1546,6 +1825,7 @@ function renderForRole() {
   document.querySelectorAll('.admin-only-gaji').forEach(el => el.style.display = isAdmin ? '' : 'none');
 
   loadKaryawan();
+  initFinanceInputs();
   clearPhoto();
   setDefaultSampaiTanggal();
   showPage('absensi');
@@ -1572,17 +1852,21 @@ function setDefaultSampaiTanggal() {
     if (el && !el.value) el.value = today;
   });
   const ago = get7DaysAgoStr();
-  ['rekap-dari','statuscuti-dari','setoran-dari'].forEach(id => {
+  ['rekap-dari','statuscuti-dari','setoran-dari','history-dari'].forEach(id => {
     const el = document.getElementById(id);
     if (el && !el.value) el.value = ago;
   });
+  ['finance-income-tanggal','finance-expense-tanggal'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el && !el.value) el.value = today;
+  });
 }
 
-// ── LOAD KARYAWAN (untuk dropdown) ────────────────────────────────
+// â”€â”€ LOAD KARYAWAN (untuk dropdown) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Kelola Akun (LocalDB.users) adalah SATU-SATUNYA sumber data nama & jabatan.
 // karyawanList dibangun ulang langsung dari LocalDB.users setiap dipanggil,
 // supaya Rekap Absensi / Rekap Gaji / Ranking / Status Duty selalu sinkron
-// dengan apa yang ditampilkan di Kelola Akun — tanpa tabel perantara yang
+// dengan apa yang ditampilkan di Kelola Akun - tanpa tabel perantara yang
 // bisa basi (stale).
 function loadKaryawan() {
   LocalDB.users.all().forEach(u => {
@@ -1656,9 +1940,9 @@ function onCutiNamaChange() {
 }
 window.onCutiNamaChange = onCutiNamaChange;
 
-// ════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // FOTO BUKTI (wajib untuk Clock In / Clock Out)
-// ════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 window.handlePhotoSelect = function(e) {
   const file = e.target.files[0];
   if (!file) return;
@@ -1708,7 +1992,7 @@ window.clearPhoto = function() {
   hideEl('absensi-photo-preview'); showEl('absensi-photo-placeholder');
 };
 
-// ── DISCORD WEBHOOK ───────────────────────────────────────────────
+// â”€â”€ DISCORD WEBHOOK â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 async function sendCutiToDiscord(nama, jenisIzin, dari, sampai) {
   const url = WEBHOOK_CONFIG.cuti;
   if (!url) return;
@@ -1716,17 +2000,17 @@ async function sendCutiToDiscord(nama, jenisIzin, dari, sampai) {
   const dariParts = dari.split('-'); const sampaiParts = sampai.split('-');
   const months = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
   const fmtTgl = parts => `${parseInt(parts[2],10)} ${months[parseInt(parts[1],10)-1]} ${parts[0]}`;
-  const rentang = dari === sampai ? fmtTgl(dariParts) : `${fmtTgl(dariParts)} — ${fmtTgl(sampaiParts)}`;
+  const rentang = dari === sampai ? fmtTgl(dariParts) : `${fmtTgl(dariParts)} - ${fmtTgl(sampaiParts)}`;
 
   const payload = {
     content: DISCORD_HR_ROLE_ID ? `<@&${DISCORD_HR_ROLE_ID}>` : '@HR',
     allowed_mentions: DISCORD_HR_ROLE_ID ? { roles: [DISCORD_HR_ROLE_ID] } : { parse: ['everyone','roles','users'] },
     embeds: [{
-      author: { name: '📋 Pengajuan Cuti · Kabinet Roxwood' },
-      title: '⚠️ Cuti Baru — Mohon Ditindaklanjuti',
+      author: { name: 'ðŸ“‹ Pengajuan Cuti Â· Kabinet Roxwood' },
+      title: 'âš ï¸ Cuti Baru - Mohon Ditindaklanjuti',
       color: 16763904,
-      description: `**${nama}** telah mengajukan **${jenisLabel}**.\n\n📅 **${rentang}**\n\n> *Mohon segera diperiksa dan ditindaklanjuti oleh tim HR.*`,
-      footer: { text: 'Sistem Pengajuan Cuti · Kabinet Roxwood', icon_url: 'https://cdn.discordapp.com/attachments/1474186524747894919/1501819127751512134/lg_rx.png' },
+      description: `**${nama}** telah mengajukan **${jenisLabel}**.\n\nðŸ“… **${rentang}**\n\n> *Mohon segera diperiksa dan ditindaklanjuti oleh tim HR.*`,
+      footer: { text: 'Sistem Pengajuan Cuti Â· Kabinet Roxwood', icon_url: 'https://cdn.discordapp.com/attachments/1474186524747894919/1501819127751512134/lg_rx.png' },
       timestamp: new Date().toISOString()
     }]
   };
@@ -1742,17 +2026,17 @@ async function sendAttendanceToDiscord(action, profile, waktu, photoFile) {
   const unixTs = Math.floor(waktu.getTime()/1000);
   const embed = {
     embeds: [{
-      author: { name: 'Log Absensi · Kabinet Roxwood' },
-      title: isIn ? '✅ Clock In' : '🚪 Clock Out',
+      author: { name: 'Log Absensi Â· Kabinet Roxwood' },
+      title: isIn ? 'âœ… Clock In' : 'ðŸšª Clock Out',
       color: isIn ? 5763719 : 15548997,
       fields: [
-        { name: '👤 Nama',    value: `**${profile.nama}**`,        inline: true },
-        { name: '💼 Jabatan', value: `\`${profile.jabatan||'-'}\``, inline: true },
-        { name: '🪪 ID',      value: `\`${profile.id_karyawan||'-'}\``, inline: true },
-        { name: '⏰ Waktu',   value: `<t:${unixTs}:F>`,             inline: false }
+        { name: 'ðŸ‘¤ Nama',    value: `**${profile.nama}**`,        inline: true },
+        { name: 'ðŸ’¼ Jabatan', value: `\`${profile.jabatan||'-'}\``, inline: true },
+        { name: 'ðŸªª ID',      value: `\`${profile.id_karyawan||'-'}\``, inline: true },
+        { name: 'â° Waktu',   value: `<t:${unixTs}:F>`,             inline: false }
       ],
       image: photoFile ? { url: 'attachment://bukti.jpg' } : undefined,
-      footer: { text: 'Sistem Absensi · Kabinet Roxwood' },
+      footer: { text: 'Sistem Absensi Â· Kabinet Roxwood' },
       timestamp: waktu.toISOString()
     }]
   };
@@ -1764,9 +2048,9 @@ async function sendAttendanceToDiscord(action, profile, waktu, photoFile) {
   } catch(e) { console.warn('[Discord Webhook] Gagal kirim:', e.message); }
 }
 
-// ════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // CLOCK IN / OUT
-// ════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 window.handleClockIn = function() {
   if (!pendingPhotoFile) { showToast('warning','Foto bukti wajib diisi sebelum Clock In.'); return; }
   const btn = document.getElementById('btn-clock-in');
@@ -1832,9 +2116,9 @@ async function submitAttendance(action) {
   }
 }
 
-// ════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // REKAP ABSENSI
-// ════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 window.loadRekap = function() {
   const isAdmin = currentProfile.role === 'admin';
   const nama = isAdmin ? document.getElementById('rekap-filter-nama').value : currentProfile.nama;
@@ -1867,7 +2151,7 @@ window.resetRekap = function() {
   document.getElementById('rekap-sampai').value = getLocalDateStr();
   const rn = document.getElementById('rekap-filter-nama'); if (rn) rn.value = '';
   document.getElementById('rekap-tbody').innerHTML = '<tr><td colspan="9" class="text-center text-stone-400 py-12"><div class="flex flex-col items-center gap-2"><i class="fas fa-table text-3xl text-stone-200"></i><span class="text-sm font-medium">Gunakan filter di atas untuk menampilkan data</span></div></td></tr>';
-  ['stat-total-hadir','stat-total-jam','stat-avg-jam','stat-jumlah-karyawan'].forEach(id => document.getElementById(id).textContent='—');
+  ['stat-total-hadir','stat-total-jam','stat-avg-jam','stat-jumlah-karyawan'].forEach(id => document.getElementById(id).textContent='-');
   document.getElementById('rekap-count-label').textContent = 'Belum dimuat';
 };
 
@@ -1878,7 +2162,7 @@ function statusBadge(status) {
   return `<span class="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-bold ${cls}"><i class="fas ${icon} text-[10px]"></i>${s}</span>`;
 }
 
-// ── SHIFT DATE HELPER (06:00–06:00 GMT+7) ─────────────────────────
+// â”€â”€ SHIFT DATE HELPER (06:00â€“06:00 GMT+7) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // For Rekap Absensi: a shift runs from 06:00 to 06:00 next day (GMT+7).
 // If the local time (GMT+7) is before 06:00, it belongs to the PREVIOUS day's shift.
 function getShiftDate(isoString) {
@@ -1892,7 +2176,7 @@ function getShiftDate(isoString) {
   const dateStr = match[1];
   const hour = parseInt(match[2], 10);
   if (hour < 6) {
-    // Before 06:00 GMT+7 → belongs to previous day's shift
+    // Before 06:00 GMT+7 â†’ belongs to previous day's shift
     const prev = new Date(dateStr + 'T00:00:00');
     prev.setDate(prev.getDate() - 1);
     return `${prev.getFullYear()}-${String(prev.getMonth()+1).padStart(2,'0')}-${String(prev.getDate()).padStart(2,'0')}`;
@@ -1953,7 +2237,7 @@ function renderRekapTable(data) {
     });
     const dH=Math.floor(dayMin/60), dM=dayMin%60;
     html += `<tr style="background:#f0fdf4;border-top:2px solid #86efac;">
-      <td colspan="8" style="padding:10px 16px;"><span style="display:inline-flex;align-items:center;gap:6px;background:#dcfce7;color:#166534;border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;"><i class="fas fa-calendar-check" style="font-size:9px;"></i> Total Shift ${fmtTglDisplay(tgl)} (06.00–06.00) — ${rows.length} sesi</span></td>
+      <td colspan="8" style="padding:10px 16px;"><span style="display:inline-flex;align-items:center;gap:6px;background:#dcfce7;color:#166534;border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;"><i class="fas fa-calendar-check" style="font-size:9px;"></i> Total Shift ${fmtTglDisplay(tgl)} (06.00â€“06.00) - ${rows.length} sesi</span></td>
       <td style="padding:10px 16px;text-align:right;"><span style="font-weight:900;color:#15803d;font-size:14px;">${dH}j ${dM}m</span></td>
     </tr>`;
   });
@@ -1976,12 +2260,12 @@ function updateRekapStats(data) {
   let totalMin = 0; data.forEach(r => { totalMin += r.total_menit || 0; });
   const avgMin = totalHadir > 0 ? Math.round(totalMin / totalHadir) : 0;
   document.getElementById('stat-total-hadir').textContent = totalHadir;
-  document.getElementById('stat-total-jam').textContent = totalMin>0 ? menit2str(totalMin) : '—';
-  document.getElementById('stat-avg-jam').textContent = avgMin>0 ? menit2str(avgMin) : '—';
+  document.getElementById('stat-total-jam').textContent = totalMin>0 ? menit2str(totalMin) : '-';
+  document.getElementById('stat-avg-jam').textContent = avgMin>0 ? menit2str(avgMin) : '-';
   document.getElementById('stat-jumlah-karyawan').textContent = unique;
 }
 
-// ── EDIT ABSENSI (Admin) ──────────────────────────────────────────
+// â”€â”€ EDIT ABSENSI (Admin) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 window.openEditAbsensi = function(docId, clockIn, clockOut) {
   if (currentProfile?.role !== 'admin') { showToast('error','Hanya admin.'); return; }
   document.getElementById('edit-doc-id').value = docId;
@@ -2026,9 +2310,9 @@ window.deleteAbsensi = function() {
   });
 };
 
-// ════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // REKAP GAJI
-// ════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 window.loadRekapGaji = function() {
   const isAdmin = currentProfile.role === 'admin';
   const filterNama = isAdmin ? document.getElementById('gaji-filter-nama').value : currentProfile.nama;
@@ -2166,7 +2450,7 @@ function hitungGaji(jabatan, totalSesi) {
   const ju = (jabatan||'').toUpperCase(); if (ju==='OWNER') return null;
   const rk = Object.keys(GAJI_PER_3JAM).find(k => k.toUpperCase()===ju); if (!rk) return null;
   const tunjangan = GAJI_PER_3JAM[rk];
-  return { gaji: totalSesi * tunjangan, keterangan: `${totalSesi} sesi × $IDP ${tunjangan.toLocaleString('id-ID')}` };
+  return { gaji: totalSesi * tunjangan, keterangan: `${totalSesi} sesi Ã— $IDP ${tunjangan.toLocaleString('id-ID')}` };
 }
 
 function renderGajiTable(rows) {
@@ -2205,8 +2489,8 @@ function updateGajiStats(rows, isAdmin) {
   let totalMin=0, totalGaji=0;
   rows.forEach(r => { totalMin+=r.totalMenit; if(r.gaji) totalGaji+=r.gaji; });
   const ke = document.getElementById('gaji-stat-karyawan'); if (ke) ke.textContent = rows.length;
-  document.getElementById('gaji-stat-jam').textContent = totalMin>0 ? menit2str(totalMin) : '—';
-  document.getElementById('gaji-stat-total').textContent = totalGaji>0 ? '$IDP '+totalGaji.toLocaleString('id-ID') : '—';
+  document.getElementById('gaji-stat-jam').textContent = totalMin>0 ? menit2str(totalMin) : '-';
+  document.getElementById('gaji-stat-total').textContent = totalGaji>0 ? '$IDP '+totalGaji.toLocaleString('id-ID') : '-';
 }
 
 function renderGajiTextbox(rows, dari, sampai, jabatanHistory) {
@@ -2305,8 +2589,8 @@ window.resetRekapGaji = function() {
   const gfn=document.getElementById('gaji-filter-nama'); if(gfn) gfn.value='';
   gajiDoneState={}; gajiCurrentData=[];
   document.getElementById('gaji-tbody').innerHTML='<tr><td colspan="9" class="text-center text-stone-400 py-12"><i class="fas fa-money-bill-wave text-3xl text-stone-200 block mb-2"></i>Pilih periode dan tekan Hitung Gaji</td></tr>';
-  ['gaji-stat-jam','gaji-stat-total'].forEach(id=>document.getElementById(id).textContent='—');
-  const ks=document.getElementById('gaji-stat-karyawan'); if(ks) ks.textContent='—';
+  ['gaji-stat-jam','gaji-stat-total'].forEach(id=>document.getElementById(id).textContent='-');
+  const ks=document.getElementById('gaji-stat-karyawan'); if(ks) ks.textContent='-';
   document.getElementById('gaji-count-label').textContent='Belum dimuat';
   const tb=document.getElementById('gaji-textbox'); if(tb) tb.value='';
 };
@@ -2315,14 +2599,14 @@ window.copyGajiText = function() {
   const tb = document.getElementById('gaji-textbox');
   if (!tb || !tb.value) { showToast('warning','Belum ada data.'); return; }
   navigator.clipboard.writeText(tb.value)
-    .then(() => showToast('success','✅ Teks berhasil disalin!'))
-    .catch(() => { tb.select(); document.execCommand('copy'); showToast('success','✅ Disalin!'); });
+    .then(() => showToast('success','âœ… Teks berhasil disalin!'))
+    .catch(() => { tb.select(); document.execCommand('copy'); showToast('success','âœ… Disalin!'); });
 };
 
-// ════════════════════════════════════════════════════════════════════
-// RANKING ABSENSI — Leaderboard based on total attendance hours
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// RANKING ABSENSI - Leaderboard based on total attendance hours
 // Period: Dari Tanggal (1 or 15) & Sampai Tanggal (16 or end of month)
-// ════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 function getLastDayOfMonth(year, month) {
   return new Date(year, month + 1, 0).getDate();
 }
@@ -2371,7 +2655,7 @@ window.onRankingDariChange = function() {
   if (snappedDay === 1) {
     sampaiEl.value = `${prefix}15`;
   } else {
-    // 16 → end of month
+    // 16 â†’ end of month
     sampaiEl.value = `${prefix}${pad2(lastDay)}`;
   }
 };
@@ -2488,16 +2772,16 @@ function updateRankingStats(rows) {
   const topEl = document.getElementById('ranking-stat-top');
   const totalEl = document.getElementById('ranking-stat-total');
   const jamEl = document.getElementById('ranking-stat-jam');
-  if (topEl) topEl.textContent = rows.length > 0 ? rows[0].nama : '—';
+  if (topEl) topEl.textContent = rows.length > 0 ? rows[0].nama : '-';
   if (totalEl) totalEl.textContent = rows.length;
   // Total Jam: show rank 1's total hours (not all participants)
   const topMin = rows.length > 0 ? rows[0].totalMenit : 0;
-  if (jamEl) jamEl.textContent = topMin > 0 ? menit2str(topMin) : '—';
+  if (jamEl) jamEl.textContent = topMin > 0 ? menit2str(topMin) : '-';
 }
 
-// ════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // CUTI / IZIN
-// ════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 window.submitCuti = function() {
   const sel = document.getElementById('cuti-select-nama'), opt = sel.options[sel.selectedIndex];
   const nama = opt?.dataset?.nama || '', id = document.getElementById('cuti-id').value;
@@ -2518,7 +2802,7 @@ window.submitCuti = function() {
   // Notifikasi ke Discord
   sendCutiToDiscord(nama, jenis, dari, sampai);
 
-  playSound('success'); showToast('success','✅ Pengajuan terkirim!');
+  playSound('success'); showToast('success','âœ… Pengajuan terkirim!');
   document.getElementById('cuti-select-nama').selectedIndex = currentProfile.role==='staff' ? sel.selectedIndex : 0;
   ['cuti-id','cuti-jabatan','cuti-divisi','cuti-dari','cuti-sampai','cuti-alasan'].forEach(id => document.getElementById(id).value='');
   document.getElementById('cuti-jenis').selectedIndex = 0;
@@ -2546,21 +2830,29 @@ function renderStatusCutiTable(data) {
   const tbody = document.getElementById('statuscuti-tbody'), isAdmin = currentProfile.role==='admin';
   document.getElementById('statuscuti-count-label').textContent = data.length + ' pengajuan ditemukan';
 
-  // Dynamic header: staff sees "Catatan", admin sees "Catatan/Aksi"
   const colAksi = document.getElementById('statuscuti-col-aksi');
   if (colAksi) colAksi.textContent = isAdmin ? 'Catatan/Aksi' : 'Catatan';
 
   if (!data.length) { tbody.innerHTML = '<tr><td colspan="9" class="text-center py-12 text-stone-400"><i class="fas fa-calendar text-3xl text-stone-200 block mb-2"></i>Tidak ada data</td></tr>'; return; }
   tbody.innerHTML = data.map((row,i) => {
     const tglP = row.tgl_pengajuan ? fmtTglDisplay(row.tgl_pengajuan) : '-';
+    const alasan = row.alasan || '-';
+    const catatan = row.catatan || '-';
+    const eyeAlasan = `<button onclick="openCutiDetail('${row.id}','alasan')" class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-brand-700 hover:bg-brand-100" title="Lihat alasan full"><i class="fas fa-eye text-xs"></i></button>`;
+    const eyeCatatan = `<button onclick="openCutiDetail('${row.id}','catatan')" class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-brand-700 hover:bg-brand-100" title="Lihat catatan full"><i class="fas fa-eye text-xs"></i></button>`;
     const lastCell = isAdmin
-      ? `<td><div class="flex gap-1 items-center"><button onclick="openEditCuti('${row.id}','${(row.status||'Pending')}','${(row.catatan||'').replace(/'/g,"\\'").replace(/\n/g,' ')}')" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200 transition"><i class="fas fa-pencil text-[10px]"></i> Edit</button></div></td>`
-      : `<td class="text-stone-500 max-w-[140px] text-xs"><span class="truncate block">${row.catatan || '—'}</span></td>`;
-    return `<tr><td class="text-stone-400 font-semibold">${i+1}</td><td class="font-semibold text-stone-600 text-xs">${tglP}</td><td class="font-semibold text-stone-900">${row.nama||'-'}</td><td><span class="inline-flex items-center rounded-lg bg-blue-50 px-2.5 py-1 text-xs font-bold text-blue-700">${row.jenis_izin||'-'}</span></td><td class="text-stone-600 text-xs">${fmtTglDisplay(row.tanggal_mulai)}</td><td class="text-stone-600 text-xs">${fmtTglDisplay(row.tanggal_selesai)}</td><td class="text-stone-500 max-w-[140px]"><span class="truncate block">${row.alasan||'-'}</span></td><td>${statusBadge(row.status)}</td>${lastCell}</tr>`;
+      ? `<td><div class="flex gap-1 items-center">${eyeCatatan}<button onclick="openEditCuti('${row.id}','${(row.status||'Pending')}','${(row.catatan||'').replace(/'/g,"\\'").replace(/\n/g,' ')}')" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200 transition"><i class="fas fa-pencil text-[10px]"></i> Edit</button></div></td>`
+      : `<td class="text-stone-500 max-w-[140px] text-xs"><div class="flex items-center gap-2"><span class="truncate block flex-1">${escapeHtml(catatan)}</span>${eyeCatatan}</div></td>`;
+    return `<tr><td class="text-stone-400 font-semibold">${i+1}</td><td class="font-semibold text-stone-600 text-xs">${tglP}</td><td class="font-semibold text-stone-900">${row.nama||'-'}</td><td><span class="inline-flex items-center rounded-lg bg-blue-50 px-2.5 py-1 text-xs font-bold text-blue-700">${row.jenis_izin||'-'}</span></td><td class="text-stone-600 text-xs">${fmtTglDisplay(row.tanggal_mulai)}</td><td class="text-stone-600 text-xs">${fmtTglDisplay(row.tanggal_selesai)}</td><td class="text-stone-500 max-w-[140px]"><div class="flex items-center gap-2"><span class="truncate block flex-1">${escapeHtml(alasan)}</span>${eyeAlasan}</div></td><td>${statusBadge(row.status)}</td>${lastCell}</tr>`;
   }).join('');
 }
 
-window.openEditCuti = function(docId, currentStatus, currentCatatan) {
+window.openCutiDetail = function(id, field) {
+  const row = LocalDB.cuti.all().find(r => r.id === id);
+  if (!row) { showToast('error','Data cuti tidak ditemukan.'); return; }
+  const isCatatan = field === 'catatan';
+  openDetailView(isCatatan ? 'Catatan Cuti' : 'Alasan Cuti', row.nama || 'Cuti', isCatatan ? (row.catatan || '-') : (row.alasan || '-'));
+};window.openEditCuti = function(docId, currentStatus, currentCatatan) {
   if (currentProfile?.role !== 'admin') { showToast('error','Hanya admin.'); return; }
   document.getElementById('editcuti-doc-id').value  = docId;
   document.getElementById('editcuti-status').value  = currentStatus||'Pending';
@@ -2586,14 +2878,14 @@ function updateCutiStats(data) {
   document.getElementById('cuti-stat-rejected').textContent = data.filter(d => d.status==='Rejected').length;
 }
 
-// ════════════════════════════════════════════════════════════════════
-// REKAP SETORAN — pencatatan setoran pembuatan Smart Card (Status "Pembuatan
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// REKAP SETORAN - pencatatan setoran pembuatan Smart Card (Status "Pembuatan
 // Baru" saja). Entri dicatat oleh smartcard-script.js langsung ke
 // localStorage memakai key yang sama dengan LocalDB.setoran ('roxwood_setoran'),
 // supaya tidak perlu mengubah arsitektur module Smart Card yang terpisah.
 // Admin & Staff sama-sama bisa melihat channel ini, tapi Staff hanya melihat
 // setoran miliknya sendiri & tidak melihat Filter Petugas / kolom Aksi.
-// ════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 window.loadRekapSetoran = function() {
   const isAdmin = currentProfile.role === 'admin';
   const aksiTh = document.getElementById('setoran-th-aksi');
@@ -2611,7 +2903,7 @@ window.loadRekapSetoran = function() {
   let data = raw;
   // Perbandingan nama petugas case-insensitive: field "petugas" pada setoran
   // selalu UPPERCASE (mengikuti #sc-inputPetugas), sedangkan nama akun di
-  // LocalDB.users memakai huruf asli — tanpa normalisasi ini filter tidak match.
+  // LocalDB.users memakai huruf asli - tanpa normalisasi ini filter tidak match.
   if (!isAdmin) {
     data = data.filter(r => (r.petugas||'').toUpperCase() === (currentProfile.nama||'').toUpperCase());
   } else if (petugas) {
@@ -2652,7 +2944,7 @@ function renderSetoranTable(data, isAdmin) {
   </tr>`).join('');
 }
 
-// ── EDIT MASA BERLAKU (Admin, via modal) ──
+// â”€â”€ EDIT MASA BERLAKU (Admin, via modal) â”€â”€
 window.openEditSetoran = function(id) {
   if (currentProfile?.role !== 'admin') { showToast('error','Hanya admin.'); return; }
   const row = LocalDB.setoran.all().find(r => r.id===id);
@@ -2685,7 +2977,7 @@ window.saveEditSetoran = function() {
   showToast('success','Masa berlaku berhasil diperbarui.');
 };
 
-// ── HAPUS SETORAN (Admin, via modal konfirmasi generik) ──
+// â”€â”€ HAPUS SETORAN (Admin, via modal konfirmasi generik) â”€â”€
 window.confirmHapusSetoran = function(id, nama) {
   if (currentProfile?.role !== 'admin') { showToast('error','Hanya admin.'); return; }
   openActionConfirm({
@@ -2707,21 +2999,21 @@ function updateSetoranStats(data) {
   const total1Bulan = data.filter(r => r.durasi==='1 BULAN').length;
   const total1Tahun = data.filter(r => r.durasi==='1 TAHUN').length;
   const totalKta = data.filter(r => r.jenis==='KTA').length;
-  document.getElementById('setoran-stat-total').textContent   = total>0 ? total : '—';
-  document.getElementById('setoran-stat-1bulan').textContent  = total>0 ? total1Bulan : '—';
-  document.getElementById('setoran-stat-1tahun').textContent  = total>0 ? total1Tahun : '—';
+  document.getElementById('setoran-stat-total').textContent   = total>0 ? total : '-';
+  document.getElementById('setoran-stat-1bulan').textContent  = total>0 ? total1Bulan : '-';
+  document.getElementById('setoran-stat-1tahun').textContent  = total>0 ? total1Tahun : '-';
   const ktaEl = document.getElementById('setoran-stat-kta');
-  if (ktaEl) ktaEl.textContent = totalKta>0 ? totalKta : '—';
-  document.getElementById('setoran-stat-nominal').textContent = total>0 ? '$IDP '+totalNominal.toLocaleString('id-ID') : '—';
+  if (ktaEl) ktaEl.textContent = totalKta>0 ? totalKta : '-';
+  document.getElementById('setoran-stat-nominal').textContent = total>0 ? '$IDP '+totalNominal.toLocaleString('id-ID') : '-';
 }
 
-// ════════════════════════════════════════════════════════════════════
-// STATUS DUTY — On Duty (sedang Clock In) vs Off Duty (tidak Clock In)
-// ════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// STATUS DUTY - On Duty (sedang Clock In) vs Off Duty (tidak Clock In)
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 window.loadStatusDuty = function() {
   const todayStr = getLocalDateStr();
   const openIds = new Set(LocalDB.absensi.all().filter(r => r.tanggal === todayStr && !r.clock_out).map(r => r.id_karyawan));
-  // Status Duty adalah roster bersama — semua role (admin & staff) melihat status SEMUA akun.
+  // Status Duty adalah roster bersama - semua role (admin & staff) melihat status SEMUA akun.
   const list = karyawanList;
   const onDuty = list.filter(k => openIds.has(k.id_karyawan));
   const offDuty = list.filter(k => !openIds.has(k.id_karyawan));
@@ -2730,9 +3022,9 @@ window.loadStatusDuty = function() {
   document.getElementById('statusduty-offduty-col').innerHTML = offDuty.length ? offDuty.map(k=>rowTpl(k,false)).join('') : '<div class="px-4 py-10 text-center text-xs text-stone-500 italic">Semua sedang On Duty</div>';
 };
 
-// ════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // KELOLA AKUN (Admin only)
-// ════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 function loadAkunList() {
   renderAkunTable(LocalDB.users.all());
   renderJabatanHistoryTable();
@@ -2783,7 +3075,7 @@ function renderAkunTable(users) {
   </tr>`}).join('');
 }
 
-// ── EDIT PENGGUNA (Admin, via modal — Jabatan & Divisi) ──
+// â”€â”€ EDIT PENGGUNA (Admin, via modal - Jabatan & Divisi) â”€â”€
 window.openEditJabatan = function(uid, nama, jabatan, divisi) {
   if (currentProfile?.role !== 'admin') { showToast('error','Hanya admin.'); return; }
   document.getElementById('editjabatan-uid').value = uid;
@@ -2873,7 +3165,7 @@ window.onNamaInput = function() {
 window.updateEmailPreview = function() {
   const val = document.getElementById('akun-username').value.trim();
   const email = val ? (val.includes('@') ? val : val+'@roxwood.id') : '';
-  document.getElementById('akun-email-preview').textContent = email ? '→ '+email : '';
+  document.getElementById('akun-email-preview').textContent = email ? 'â†’ '+email : '';
 };
 
 window.buatAkun = function() {
@@ -2887,7 +3179,7 @@ window.buatAkun = function() {
   if (!['admin','staff'].includes(role)) { showToast('error','Role tidak valid.'); return; }
   const email = username.includes('@') ? username : username+'@roxwood.id';
   if (LocalDB.users.findByEmail(email)) { showToast('error','Email sudah digunakan.'); return; }
-  // Auto-generate id_karyawan if not provided — required for dropdown/ranking/payroll visibility
+  // Auto-generate id_karyawan if not provided - required for dropdown/ranking/payroll visibility
   if (!idKaryawan) idKaryawan = _newId('k');
   const btn = document.getElementById('btn-buat-akun');
   const btnOrig = btn ? btn.innerHTML : '';
@@ -2907,7 +3199,7 @@ window.buatAkun = function() {
     }
     renderAkunTable(LocalDB.users.all());
     renderJabatanHistoryTable();
-    showToast('success', `✅ Akun ${nama} berhasil dibuat. Password: kabinetidp`);
+    showToast('success', `âœ… Akun ${nama} berhasil dibuat. Password: kabinetidp`);
     ['akun-nama','akun-username','akun-id-karyawan','akun-jabatan'].forEach(id => document.getElementById(id).value='');
     document.getElementById('akun-role').selectedIndex = 0;
     document.getElementById('akun-divisi').selectedIndex = 0;
@@ -2916,7 +3208,7 @@ window.buatAkun = function() {
     // Kembalikan sesi ke admin yang sedang login (Firebase otomatis pindah
     // sesi ke akun baru saat createAccount dipanggil dari client).
     if (adminEmail) {
-      showToast('info', 'Sesi dialihkan sementara — silakan login ulang sebagai diri Anda.');
+      showToast('info', 'Sesi dialihkan sementara - silakan login ulang sebagai diri Anda.');
       window.FirebaseAuth.signOutUser().finally(() => {
         currentUser = null; currentProfile = null;
         localStorage.removeItem('roxwood_session_uid');
@@ -2936,7 +3228,7 @@ window.buatAkun = function() {
   });
 };
 
-// ── GANTI PASSWORD (lokal, sementara) ─────────────────────────────
+// â”€â”€ GANTI PASSWORD (lokal, sementara) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 window.gantiPassword = function() {
   const passLama = document.getElementById('pass-lama').value;
   const passBaru = document.getElementById('pass-baru').value;
@@ -2949,7 +3241,7 @@ window.gantiPassword = function() {
   if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...'; }
   window.FirebaseAuth.changePassword(currentUser.email, passLama, passBaru).then(() => {
     if (btn) { btn.disabled = false; btn.innerHTML = orig; }
-    showToast('success','✅ Password berhasil diganti!');
+    showToast('success','âœ… Password berhasil diganti!');
     ['pass-lama','pass-baru','pass-ulang'].forEach(id => document.getElementById(id).value='');
     document.getElementById('pass-match-hint').textContent = '';
   }).catch((err) => {
@@ -2972,11 +3264,11 @@ window.checkPassMatch = function() {
   const ulang = document.getElementById('pass-ulang').value;
   const hint = document.getElementById('pass-match-hint');
   if (!ulang) { hint.textContent=''; return; }
-  if (baru===ulang) { hint.textContent='✓ Password cocok'; hint.className='text-xs mt-1 text-emerald-600 font-semibold'; }
-  else { hint.textContent='✗ Password tidak cocok'; hint.className='text-xs mt-1 text-rose-600 font-semibold'; }
+  if (baru===ulang) { hint.textContent='âœ“ Password cocok'; hint.className='text-xs mt-1 text-emerald-600 font-semibold'; }
+  else { hint.textContent='âœ— Password tidak cocok'; hint.className='text-xs mt-1 text-rose-600 font-semibold'; }
 };
 
-// ── KONFIRMASI AKSI GENERIK (modal reusable) ──────────────────────
+// â”€â”€ KONFIRMASI AKSI GENERIK (modal reusable) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 let pendingActionConfirm = null;
 window.openActionConfirm = function({title, message, confirmText='Ya, Lanjut', variant='danger', onConfirm}) {
   pendingActionConfirm = onConfirm;
@@ -2996,7 +3288,7 @@ window.submitActionConfirm = async function() {
   finally { btn.disabled=false; btn.innerHTML=orig; }
 };
 
-// ── SPREADSHEET FORMATTER ──────────────────────────────────────────
+// â”€â”€ SPREADSHEET FORMATTER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Parsing teks pendaftaran "Label : Value" jadi output tab-separated.
 let fmtExpType = '1y'; // '1y' = 1 TAHUN, '1m' = 1 BULAN
 let fmtLastParsed = null;
@@ -3174,7 +3466,7 @@ function fmtConvert() {
   const noHp = fmtGetField(lines, 'NO HP');
 
   if (!nama) {
-    fmtSetError('Format tidak dikenali — pastikan baris "NAMA LENGKAP :" terisi.');
+    fmtSetError('Format tidak dikenali - pastikan baris "NAMA LENGKAP :" terisi.');
     output.innerHTML = '<span class="text-stone-500">Hasil akan muncul di sini setelah konversi...</span>';
     fmtLastParsed = null;
     return;
@@ -3194,11 +3486,11 @@ function fmtConvert() {
 
   fmtLastParsed = { nama, tglLahir, tglLahirIso, gender, pekerjaan, jabatan, noHp, kota, masaBerlaku, masaExpired, expType: fmtExpType };
 
-  // Output utama: Nama Lengkap • Tanggal Lahir • Pekerjaan • Masa Berlaku • Masa Expired • No HP
+  // Output utama: Nama Lengkap â€¢ Tanggal Lahir â€¢ Pekerjaan â€¢ Masa Berlaku â€¢ Masa Expired â€¢ No HP
   const row = [nama.toUpperCase(), tglLahir, pekerjaan.toUpperCase(), masaBerlaku, masaExpired, noHp].join('\t');
   output.textContent = row;
 
-  // KTA: Jabatan • Masa Expired KTA (2 Bulan)
+  // KTA: Jabatan â€¢ Masa Expired KTA (2 Bulan)
   if (ktaCheck && ktaCheck.checked && ktaSection && outputKta) {
     ktaSection.style.display = 'block';
     const ktaExpDate = fmtAddMonths(now, 2);
@@ -3215,10 +3507,10 @@ function fmtConvert() {
     const wKota = document.getElementById('fmt-wKota');
     const wTgl = document.getElementById('fmt-wTgl');
     const wPekerjaan = document.getElementById('fmt-wPekerjaan');
-    if (wNama) wNama.textContent = nama.toUpperCase() || '—';
+    if (wNama) wNama.textContent = nama.toUpperCase() || '-';
     if (wKota) wKota.textContent = kota || 'ROXWOOD';
-    if (wTgl) wTgl.textContent = tglLahir || '—';
-    if (wPekerjaan) wPekerjaan.textContent = pekerjaan.toUpperCase() || '—';
+    if (wTgl) wTgl.textContent = tglLahir || '-';
+    if (wPekerjaan) wPekerjaan.textContent = pekerjaan.toUpperCase() || '-';
   }
 }
 
@@ -3317,10 +3609,10 @@ window.fmtExportData = function() {
 };
 
 
-// ════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 // PERJALANAN DINAS & HASIL KERJA CREATIVE
 // Upload hasil kerja ke Discord via webhook, bonus gaji otomatis.
-// ════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 // Helper: send file to Discord webhook
 async function sendHasilKerjaToDiscord(webhookUrl, file, nama, keterangan, jenis, highRes) {
@@ -3387,17 +3679,17 @@ async function sendHasilKerjaToDiscord(webhookUrl, file, nama, keterangan, jenis
     username: 'Roxwood Command Center',
     avatar_url: logoUrl,
     embeds: [{
-      author: { name: '📋 Hasil Kerja Kabinet · Kabinet Roxwood', icon_url: logoUrl },
-      title: `📤 ${jenisLabel} — ${nama.toUpperCase()}`,
+      author: { name: 'ðŸ“‹ Hasil Kerja Kabinet Â· Kabinet Roxwood', icon_url: logoUrl },
+      title: `ðŸ“¤ ${jenisLabel} - ${nama.toUpperCase()}`,
       color: color,
       fields: [
-        { name: '👤 Nama', value: `**${nama.toUpperCase()}**`, inline: true },
-        { name: '📅 Tanggal', value: `**${getLocalDateStr()}**`, inline: true },
-        { name: '💰 Bonus', value: `**${bonusLabel}**`, inline: true },
-        { name: '📝 Keterangan Project', value: keterangan, inline: false }
+        { name: 'ðŸ‘¤ Nama', value: `**${nama.toUpperCase()}**`, inline: true },
+        { name: 'ðŸ“… Tanggal', value: `**${getLocalDateStr()}**`, inline: true },
+        { name: 'ðŸ’° Bonus', value: `**${bonusLabel}**`, inline: true },
+        { name: 'ðŸ“ Keterangan Project', value: keterangan, inline: false }
       ],
       image: { url: `attachment://${formattedName}` },
-      footer: { text: 'Sistem Hasil Kerja · Kabinet Roxwood', icon_url: logoUrl },
+      footer: { text: 'Sistem Hasil Kerja Â· Kabinet Roxwood', icon_url: logoUrl },
       timestamp: new Date().toISOString()
     }]
   };
@@ -3452,7 +3744,7 @@ window.submitPerjalananDinas = async function() {
     fileInput.value = '';
     document.getElementById('pd-keterangan').value = '';
     playSound('success');
-    showToast('success', '✅ Perjalanan Dinas berhasil dikirim! Bonus $IDP 50.000');
+    showToast('success', 'âœ… Perjalanan Dinas berhasil dikirim! Bonus $IDP 50.000');
     // Delay reload to ensure cache is updated
     setTimeout(() => loadPerjalananDinas(), 100);
   } catch(e) {
@@ -3549,7 +3841,7 @@ window.submitHasilCreative = async function() {
     fileInput.value = '';
     document.getElementById('hc-keterangan').value = '';
     playSound('success');
-    showToast('success', '✅ Hasil Creative berhasil dikirim! Bonus $IDP 200.000');
+    showToast('success', 'âœ… Hasil Creative berhasil dikirim! Bonus $IDP 200.000');
     // Delay reload to ensure cache is updated
     setTimeout(() => loadHasilCreative(), 100);
   } catch(e) {
@@ -3597,7 +3889,7 @@ window.resetHcFilter = function() {
   loadHasilCreative();
 };
 
-// Delete Hasil Kerja (Admin only) — used by both Perjalanan Dinas & Hasil Creative
+// Delete Hasil Kerja (Admin only) - used by both Perjalanan Dinas & Hasil Creative
 window.confirmHapusHasilKerja = function(id, nama) {
   if (currentProfile?.role !== 'admin') { showToast('error','Hanya admin.'); return; }
   openActionConfirm({
@@ -3614,7 +3906,294 @@ window.confirmHapusHasilKerja = function(id, nama) {
   });
 };
 
+// FINANCE
+const FINANCE_PAGES = ['finance-overview','finance-income','finance-expense','finance-history'];
+
+function ensureFinanceAccess() {
+  if (canAccessFinance()) return true;
+  showToast('error','Akses Finance hanya untuk Admin, Divisi Finance, dan Non Divisi.');
+  showPage('absensi');
+  return false;
+}
+
+function initFinanceInputs() {
+  ['finance-income-nominal','finance-expense-nominal','editfinance-nominal'].forEach(bindNominalFormatter);
+}
+
+function renderFinanceOverview() {
+  const rows = LocalDB.finance.all();
+  const income = rows.filter(r => r.finance_type === 'income').reduce((s,r) => s + (Number(r.nominal)||0), 0);
+  const expense = rows.filter(r => r.finance_type === 'expense').reduce((s,r) => s + (Number(r.nominal)||0), 0);
+  const balance = income - expense;
+  document.getElementById('finance-stat-income').textContent = rows.length ? formatIDR(income) : '-';
+  document.getElementById('finance-stat-expense').textContent = rows.length ? formatIDR(expense) : '-';
+  document.getElementById('finance-stat-balance').textContent = rows.length ? formatIDR(balance) : '-';
+  drawFinanceDiagramChart(income, expense);
+  drawFinanceLineChart(rows);
+}
+
+window.loadFinanceOverview = function() {
+  if (!ensureFinanceAccess()) return;
+  renderFinanceOverview();
+  loadFinanceFromDb().then(renderFinanceOverview);
+};
+
+function getFinanceFormValues(type) {
+  const prefix = type === 'expense' ? 'finance-expense' : 'finance-income';
+  return {
+    tanggal: document.getElementById(prefix + '-tanggal').value,
+    nominal: parseNominalInput(document.getElementById(prefix + '-nominal').value),
+    kategori: document.getElementById(prefix + '-kategori').value.trim(),
+    keterangan: document.getElementById(prefix + '-keterangan').value.trim(),
+    prefix
+  };
+}
+
+window.submitFinance = function(type = 'income') {
+  if (!ensureFinanceAccess()) return;
+  const financeType = type === 'expense' ? 'expense' : 'income';
+  const { tanggal, nominal, kategori, keterangan, prefix } = getFinanceFormValues(financeType);
+  if (!tanggal || !nominal || nominal <= 0 || !kategori) {
+    showToast('warning','Tanggal, nominal, dan kategori wajib diisi.');
+    return;
+  }
+  LocalDB.finance.add({
+    finance_type: financeType,
+    tanggal,
+    nominal,
+    kategori,
+    keterangan,
+    nama: currentProfile.nama || currentUser?.email || '-',
+    id_karyawan: currentProfile.id_karyawan || '',
+    divisi: currentProfile.divisi || '',
+    aktivitas: financeType === 'expense' ? 'Pencatatan Pengeluaran' : 'Pencatatan Pemasukan'
+  });
+  document.getElementById(prefix + '-nominal').value = '';
+  document.getElementById(prefix + '-kategori').value = '';
+  document.getElementById(prefix + '-keterangan').value = '';
+  saveFinanceLocalCache();
+  showToast('success', financeType === 'expense' ? 'Pengeluaran berhasil disimpan. Riwayat tersedia di History Finance.' : 'Pemasukan berhasil disimpan. Riwayat tersedia di History Finance.');
+};
+
+function makeHistoryRows() {
+  const rows = [];
+
+  if (canAccessFinance()) {
+    LocalDB.finance.all().forEach(r => rows.push({
+      id: r.id,
+      date: r.tanggal || (r.created_at||'').split('T')[0],
+      type: r.finance_type === 'expense' ? 'expense' : 'income',
+      name: r.nama || '-',
+      activity: r.finance_type === 'expense' ? 'Pengeluaran' : 'Pemasukan',
+      nominal: Number(r.nominal) || 0,
+      kategori: r.kategori || '-',
+      detail: r.keterangan || '-',
+      sort: r.created_at || r.tanggal || ''
+    }));
+  }
+  return rows;
+}
+
+function renderFinanceHistoryFromFilters() {
+  const filterType = document.getElementById('history-filter-type')?.value || '';
+  const dari = document.getElementById('history-dari')?.value || '';
+  const sampai = document.getElementById('history-sampai')?.value || '';
+  let rows = makeHistoryRows();
+  if (filterType) rows = rows.filter(r => r.type === filterType);
+  if (dari) rows = rows.filter(r => (r.date || '') >= dari);
+  if (sampai) rows = rows.filter(r => (r.date || '') <= sampai);
+  rows.sort((a,b) => (b.sort || b.date || '').localeCompare(a.sort || a.date || ''));
+  hideEl('history-loading');
+  renderHistoryTable(rows);
+}
+
+window.loadHistory = function() {
+  if (!ensureFinanceAccess()) return;
+  renderFinanceHistoryFromFilters();
+  loadFinanceFromDb().then(renderFinanceHistoryFromFilters);
+};
+
+window.resetHistory = function() {
+  document.getElementById('history-filter-type').value = '';
+  document.getElementById('history-dari').value = get7DaysAgoStr();
+  document.getElementById('history-sampai').value = getLocalDateStr();
+  loadHistory();
+};
+
+function renderHistoryTable(rows) {
+  const tbody = document.getElementById('history-tbody');
+  const count = document.getElementById('history-count-label');
+  if (count) count.textContent = rows.length + ' transaksi finance ditemukan';
+  if (!rows.length) {
+    tbody.innerHTML = '<tr><td colspan="7" class="text-center py-12 text-stone-400"><i class="fas fa-inbox text-3xl text-stone-200 block mb-2"></i>Tidak ada history finance pada filter ini</td></tr>';
+    return;
+  }
+  const label = {
+    income: ['Pemasukan', 'bg-emerald-50 text-emerald-700'],
+    expense: ['Pengeluaran', 'bg-rose-50 text-rose-700']
+  };
+  tbody.innerHTML = rows.map(r => {
+    const meta = label[r.type] || [r.type, 'bg-stone-100 text-stone-700'];
+    const detail = r.detail || '-';
+    return `<tr>
+      <td class="font-semibold text-stone-700">${fmtTglDisplay(r.date)}</td>
+      <td><span class="inline-flex items-center rounded-lg px-2.5 py-1 text-xs font-bold ${meta[1]}">${meta[0]}</span></td>
+      <td class="font-semibold text-stone-900">${escapeHtml(r.name || '-')}</td>
+      <td class="text-stone-700">${escapeHtml(r.kategori || '-')}</td>
+      <td class="font-black ${r.type==='expense' ? 'text-rose-600' : 'text-emerald-700'}">${formatIDR(r.nominal)}</td>
+      <td class="text-stone-500 max-w-[240px]"><div class="flex items-center gap-2"><span class="truncate block flex-1" title="${escapeHtml(detail)}">${escapeHtml(detail)}</span><button onclick="openFinanceDetail('${r.id}')" class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-brand-700 hover:bg-brand-100" title="Lihat full"><i class="fas fa-eye text-xs"></i></button></div></td>
+      <td><button onclick="openEditFinance('${r.id}')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200 transition-all"><i class="fas fa-pen text-[10px]"></i> Edit</button></td>
+    </tr>`;
+  }).join('');
+}
+
+window.openDetailView = function(title, eyebrow, body) {
+  document.getElementById('detail-view-title').textContent = title || 'Detail';
+  document.getElementById('detail-view-eyebrow').textContent = eyebrow || 'Detail';
+  document.getElementById('detail-view-body').textContent = body || '-';
+  showEl('detail-view-modal');
+};
+window.closeDetailView = function() { hideEl('detail-view-modal'); };
+
+window.openFinanceDetail = function(id) {
+  const row = LocalDB.finance.all().find(r => r.id === id);
+  if (!row) { showToast('error','Transaksi tidak ditemukan.'); return; }
+  openDetailView('Keterangan Finance', row.finance_type === 'expense' ? 'Pengeluaran' : 'Pemasukan', row.keterangan || '-');
+};
+
+window.openEditFinance = function(id) {
+  if (!ensureFinanceAccess()) return;
+  const row = LocalDB.finance.all().find(r => r.id === id);
+  if (!row) { showToast('error','Transaksi tidak ditemukan.'); return; }
+  document.getElementById('editfinance-id').value = id;
+  document.getElementById('editfinance-nominal').value = formatNominalInputValue(row.nominal);
+  document.getElementById('editfinance-keterangan').value = row.keterangan || '';
+  showEl('edit-finance-modal');
+};
+window.closeEditFinanceModal = function() { hideEl('edit-finance-modal'); };
+
+window.saveEditFinance = function() {
+  if (!ensureFinanceAccess()) return;
+  const id = document.getElementById('editfinance-id').value;
+  const nominal = parseNominalInput(document.getElementById('editfinance-nominal').value);
+  const keterangan = document.getElementById('editfinance-keterangan').value.trim();
+  if (!id || !nominal || nominal <= 0) { showToast('warning','Nominal wajib diisi.'); return; }
+  LocalDB.finance.update(id, { nominal, keterangan, updated_at: new Date().toISOString(), updated_by: currentProfile.nama || '' });
+  hideEl('edit-finance-modal');
+  renderFinanceHistoryFromFilters();
+  renderFinanceOverview();
+  showToast('success','Transaksi finance berhasil diperbarui.');
+};
+
+window.confirmDeleteFinance = function() {
+  const id = document.getElementById('editfinance-id').value;
+  if (!id) return;
+  hideEl('edit-finance-modal');
+  openActionConfirm({
+    title: 'Hapus Transaksi?',
+    message: 'Transaksi finance ini akan dihapus permanen.',
+    confirmText: 'Ya, Hapus',
+    variant: 'danger',
+    onConfirm: () => {
+      LocalDB.finance.remove(id);
+      renderFinanceHistoryFromFilters();
+      renderFinanceOverview();
+      showToast('success','Transaksi finance berhasil dihapus.');
+    }
+  });
+};
+
+function drawFinanceDiagramChart(income, expense) {
+  const canvas = document.getElementById('finance-diagram-chart');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const w = canvas.width, h = canvas.height;
+  ctx.clearRect(0,0,w,h);
+  const total = income + expense;
+  const cx = 150, cy = 145, r = 82;
+  if (!total) {
+    ctx.fillStyle = '#a8a29e'; ctx.font = '700 15px Plus Jakarta Sans'; ctx.textAlign = 'center';
+    ctx.fillText('Belum ada data finance', w/2, h/2);
+    return;
+  }
+  let start = -Math.PI / 2;
+  [[income, '#10b981'], [expense, '#f43f5e']].forEach(([value, color]) => {
+    const angle = (value / total) * Math.PI * 2;
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, r, start, start + angle); ctx.closePath();
+    ctx.fillStyle = color; ctx.fill(); start += angle;
+  });
+  ctx.beginPath(); ctx.arc(cx, cy, 44, 0, Math.PI * 2); ctx.fillStyle = '#fffaf5'; ctx.fill();
+  ctx.fillStyle = '#292524'; ctx.font = '800 14px Plus Jakarta Sans'; ctx.textAlign = 'center'; ctx.fillText('TOTAL', cx, cy - 4);
+  ctx.fillStyle = '#6f4c2c'; ctx.font = '800 12px Plus Jakarta Sans'; ctx.fillText(formatIDR(total), cx, cy + 16);
+  const legend = [
+    ['Pemasukan', income, '#10b981'],
+    ['Pengeluaran', expense, '#f43f5e']
+  ];
+  legend.forEach((item, i) => {
+    const y = 105 + i * 58;
+    ctx.fillStyle = item[2]; ctx.fillRect(300, y, 16, 16);
+    ctx.fillStyle = '#292524'; ctx.font = '800 14px Plus Jakarta Sans'; ctx.textAlign = 'left'; ctx.fillText(item[0], 326, y + 13);
+    ctx.fillStyle = '#78716c'; ctx.font = '700 12px Plus Jakarta Sans'; ctx.fillText(formatIDR(item[1]), 326, y + 32);
+  });
+}
+
+function drawFinanceLineChart(rows) {
+  const canvas = document.getElementById('finance-line-chart');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const w = canvas.width, h = canvas.height;
+  ctx.clearRect(0,0,w,h);
+  const byDate = {};
+  rows.forEach(r => {
+    const d = r.tanggal || (r.created_at||'').split('T')[0];
+    if (!d) return;
+    if (!byDate[d]) byDate[d] = { income: 0, expense: 0 };
+    byDate[d][r.finance_type === 'expense' ? 'expense' : 'income'] += Number(r.nominal) || 0;
+  });
+  const dates = Object.keys(byDate).sort().slice(-10);
+  if (!dates.length) {
+    ctx.fillStyle = '#a8a29e'; ctx.font = '700 15px Plus Jakarta Sans'; ctx.textAlign = 'center';
+    ctx.fillText('Belum ada data column', w/2, h/2);
+    return;
+  }
+  const pad = { left: 58, right: 24, top: 28, bottom: 48 };
+  const values = dates.flatMap(d => [byDate[d].income, byDate[d].expense]);
+  const maxVal = Math.max(...values, 1);
+  ctx.strokeStyle = '#e7d5bb'; ctx.lineWidth = 1;
+  for (let i = 0; i <= 4; i++) {
+    const y = pad.top + ((h - pad.top - pad.bottom) * i / 4);
+    ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(w - pad.right, y); ctx.stroke();
+  }
+  const plotW = w - pad.left - pad.right;
+  const plotH = h - pad.top - pad.bottom;
+  const clusterW = plotW / dates.length;
+  const barW = Math.min(24, Math.max(8, clusterW * 0.28));
+  dates.forEach((d, i) => {
+    const baseX = pad.left + i * clusterW + clusterW / 2;
+    [['income', '#10b981', -barW/1.8], ['expense', '#f43f5e', barW/1.8]].forEach(([key, color, offset]) => {
+      const value = byDate[d][key];
+      const barH = (value / maxVal) * plotH;
+      const x = baseX + offset - barW / 2;
+      const y = h - pad.bottom - barH;
+      ctx.fillStyle = color;
+      ctx.fillRect(x, y, barW, Math.max(barH, value ? 2 : 0));
+    });
+  });
+  ctx.fillStyle = '#78716c'; ctx.font = '700 10px Plus Jakarta Sans'; ctx.textAlign = 'center';
+  dates.forEach((d,i) => {
+    const x = pad.left + i * clusterW + clusterW / 2;
+    ctx.fillText(fmtTglDisplay(d).slice(0,5), x, h - 20);
+  });
+  ctx.textAlign = 'left'; ctx.font = '800 12px Plus Jakarta Sans';
+  ctx.fillStyle = '#10b981'; ctx.fillText('Pemasukan', pad.left, 18);
+  ctx.fillStyle = '#f43f5e'; ctx.fillText('Pengeluaran', pad.left + 100, 18);
+}
+
 window.showPage = function(page) {
+  if (FINANCE_PAGES.includes(page) && !canAccessFinance()) {
+    showToast('error','Akses Finance hanya untuk Admin, Divisi Finance, dan Non Divisi.');
+    page = 'absensi';
+  }
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   const pageEl = document.getElementById('page-'+page); if (pageEl) pageEl.classList.add('active');
@@ -3624,7 +4203,9 @@ window.showPage = function(page) {
     cuti:'Pengajuan Cuti', statuscuti:'Status Cuti', kelola:'Kelola Akun',
     'history-presensi':'History Presensi', 'ganti-password':'Ganti Password',
     smartcard:'Penerbitan Smart Card', spreadsheet:'Spreadsheet Formatter', 'rekap-setoran':'Rekap Setoran',
-    'perjalanan-dinas':'Perjalanan Dinas', 'hasil-creative':'Hasil Kerja Creative'
+    'perjalanan-dinas':'Perjalanan Dinas', 'hasil-creative':'Hasil Kerja Creative',
+    'finance-overview':'Overview Finance', 'finance-income':'Pencatatan Pemasukan',
+    'finance-expense':'Pencatatan Pengeluaran', 'finance-history':'History Finance'
   };
   document.getElementById('page-title').textContent = meta[page] || 'Kabinet Roxwood';
   closeSidebar();
@@ -3636,6 +4217,16 @@ window.showPage = function(page) {
   if (page === 'rekap') loadKaryawan();
   if (page === 'perjalanan-dinas') initPerjalananDinas();
   if (page === 'hasil-creative') initHasilCreative();
+  if (page === 'finance-overview') loadFinanceOverview();
+  if (page === 'finance-income') {
+    const el = document.getElementById('finance-income-tanggal');
+    if (el && !el.value) el.value = getLocalDateStr();
+  }
+  if (page === 'finance-expense') {
+    const el = document.getElementById('finance-expense-tanggal');
+    if (el && !el.value) el.value = getLocalDateStr();
+  }
+  if (page === 'finance-history') loadHistory();
 };
 
 window.openSidebar  = function() { document.getElementById('sidebar').classList.add('open');    document.getElementById('sidebar-overlay').classList.add('open');    document.body.style.overflow='hidden'; };
@@ -3658,10 +4249,11 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     hideEl('confirm-hapus-modal'); hideEl('action-confirm-modal');
     hideEl('edit-modal'); hideEl('editcuti-modal'); hideEl('edit-jabatan-modal'); hideEl('edit-setoran-modal');
+    hideEl('edit-finance-modal'); hideEl('detail-view-modal');
   }
 });
 
-// ── INIT ───────────────────────────────────────────────────────────
+// â”€â”€ INIT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Urutan boot: (1) tunggu Firebase siap (module script async),
 // (2) ambil semua data dari D1 ke cache lokal, (3) baru tryAutoLogin().
 async function bootApp() {
@@ -3676,7 +4268,10 @@ if (window.FirebaseAuth) {
 
 </script>
 
-<!-- ═══ SMART CARD: logika halaman Penerbitan Smart Card ═══ -->
+<!-- â•â•â• SMART CARD: logika halaman Penerbitan Smart Card â•â•â• -->
 <script type="module" src="smartcard-script.js"></script>
 </body>
 </html>
+
+
+
