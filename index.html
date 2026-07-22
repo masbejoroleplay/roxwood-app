@@ -176,6 +176,12 @@ CATATAN SETUP (baca sebelum deploy):
   filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.8));
   animation: scBadgePop 0.3s ease-out;
 }
+/* KARTU PASIEN memakai kanvas gambar lanskap; samakan lebarnya dengan badge lain. */
+.sc-badge-icon[src="Kartu_pasien.png"] {
+  width: 60px;
+  object-fit: cover;
+  object-position: center;
+}
 @keyframes scBadgePop {
   0%  { transform: scale(0); opacity: 0; }
   80% { transform: scale(1.1); }
