@@ -205,9 +205,10 @@ document.addEventListener("DOMContentLoaded", () => {
         return `${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}/${date.getFullYear()}`;
     }
 
-    // Get today as YYYY-MM-DD for date input default
-    function todayISO() {
+    // Get one year from today as YYYY-MM-DD for Edit Valid Date default
+    function oneYearFromTodayISO() {
         const d = new Date();
+        d.setFullYear(d.getFullYear() + 1);
         return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
     }
 
@@ -230,8 +231,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (editValidDateWrap) {
             editValidDateWrap.style.display = showEditValid ? '' : 'none';
             if (showEditValid && inputValidDate) {
-                // Default to today
-                inputValidDate.value = todayISO();
+                // Default to +1 year
+                inputValidDate.value = oneYearFromTodayISO();
                 syncValidDateToPreview();
             }
         }
